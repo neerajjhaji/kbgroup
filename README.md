@@ -1,13 +1,16 @@
-# 🏆 Forbes Fab Luxe Residences — Sector 4, Greater Noida West
+# 🏙️ KB West Walk — Commercial High-Street & Studio Suites
 
-> **Ultra-Luxury 3+1 & 4+1 BHK Resort Residences | RERA Registered: UPRERAPRJ995490**
-> *Curated with 3 Years Complimentary Forbes Global Properties Managed Services*
+> **18-Level Mixed-Use Commercial Landmark in Ecotech-12, Greater Noida West**  
+> *Developer: Shree Kunj Bihariji Realty Pvt. Ltd. (Shree KB Group)*  
+> **RERA Registered:** `UPRERAPRJ422027/01/2026` | **Promoter ID:** `UPRERAPRM414706`
 
 ---
 
 ## 🌟 Overview
 
-**Forbes Fab Luxe Residences** is an iconic 13-acre low-density residential landmark in Sector 4, Greater Noida West. Designed for ultra-high-net-worth individuals and luxury home buyers, the platform offers an immersive, interactive digital experience complete with AI-powered concierge advisory, real-time financial calculators, interactive property matchmakers, and paperless lead-dispatch systems.
+**KB West Walk** is an iconic 18-level mixed-use commercial destination at Plot No. C-3, Ecotech-12, Greater Noida West. Designed to combine prime retail, dining, entertainment, and serviced studio suites, the project features a 5-level air-conditioned shopping high-street, multi-screen multiplex cinema, gourmet food court, and high-yield studio suites.
+
+The platform provides a digital showcase with AI-powered concierge advisory, interactive property matchmakers, investment ROI estimators, spatial floor plans, and lead capture systems.
 
 ---
 
@@ -15,35 +18,31 @@
 
 | Feature | Specification Details |
 | :--- | :--- |
-| **📍 Location** | Sector 4, Greater Noida West, UP (5 Mins from Delhi-Meerut Expressway) |
-| **🏛️ Campus Scale** | 13-Acre Resort Layout with **70% Open Green Microclimates** |
-| **🏰 Iconic Towers** | 11 Sky Towers (G+35 Architectural Marvel) |
-| **👑 Grand Clubhouse** | **75,000 Sq. Ft.** 6-Star Resident Country Club & Spa |
-| **🔑 Concierge Privileges** | 3 Years Complimentary Forbes Global Properties Managed Services |
-| **📜 Regulatory Compliance** | **100% RERA Approved:** `UPRERAPRJ995490` |
-| **💰 Starting Pricing** | ₹ 2.96 Cr* Onwards with Flexible Bank Subvention Plans (20:80) |
+| **📍 Location** | Plot No. C-3, Ecotech-12, Greater Noida West (Near proposed Metro Station) |
+| **🏢 Scale & Height** | 18-Level Commercial & Studio Suites Mixed-Use Landmark |
+| **🛍️ Retail Zone** | 5 Levels AC Ventilated Shopping High-Street (LGF, GF, 1st, 2nd & 3rd Floors) |
+| **🎬 Entertainment** | Multi-Screen Multiplex Cinema (5th Floor) & Gourmet Food Court (3rd & 4th Floors) |
+| **🏢 Studio Suites** | Serviced Studio Suites & Workspaces (6th to 18th Floors) |
+| **📜 Regulatory Status** | **100% RERA Approved:** `UPRERAPRJ422027/01/2026` |
+| **💰 Starting Pricing** | Ground Boulevard ₹37,900/sq.ft. \| LGF ₹25,900/sq.ft. \| 1st Floor ₹24,900/sq.ft. |
+| **🏦 Pre-Approved Banks** | Axis Bank Ltd (RERA Collection Account), HDFC, ICICI, SBI |
 
 ---
 
 ## 🎯 Platform Features & Technical Capabilities
 
-### 1. 🤖 Conversational AI Concierge (`AIBotWidget.jsx`)
-- **Interactive Property Matchmaker:** 3-step decision tree guiding buyers based on purpose (End-user vs Investment), typology preferences, and key priorities.
-- **1-on-1 Advisory Scheduler:** Direct callback booking with Senior Relationship Directors.
-- **Local Lead Vault & CRM Sync:** Local storage backup with instant export capabilities to CSV and multi-CRM webhook integration (Salesforce & HubSpot formats).
+### 1. 🤖 Conversational AI Concierge (`src/components/AIBotWidget.jsx` & `src/services/geminiService.js`)
+- **KB Concierge AI Assistant:** Powered by Google Gemini Flash API with Google Search Grounding to fetch live commercial market benchmarks (99acres, Housing.com, Magicbricks).
+- **Interactive Matchmaker:** 4-step decision tree guiding buyers based on investment goals, shop typologies, and floor preferences.
+- **Lead Capture & Advisory Scheduler:** Direct callback booking with commercial relationship managers.
 
-### 2. 🧮 Interactive Financial Calculators (`PropertyFinder.jsx` & `InvestmentROICalculator.jsx`)
-- **Real-Time Loan EMI & Subvention Slider:** Dynamic property price value, down payment percentage, tenure, and interest rate adjustment.
-- **Capital Growth & Yield Projection Estimator:** Calculates projected 3-year and 5-year capital appreciation based on Jewar Airport and RRTS infrastructure milestones.
+### 2. 📊 Investment & Financial Calculators (`InvestmentROICalculator.jsx` & `PropertyFinder.jsx`)
+- **Real-Time EMI & Payment Plan Estimator:** Interactive pricing calculator with Down Payment, Special 40:25:25, Special 30:20:20:20, and CLP plan options.
+- **Capital Growth & Rental Yield Estimator:** Projects 3-year and 5-year capital appreciation aligned with nearby metro and Jewar Airport infrastructure milestones.
 
-### 3. 🛡️ Robust Security & Form Validation (`dispatchUtils.js`)
-- **Mathematical CAPTCHA Verification:** Prevents automated spam submissions across all inquiry modals.
-- **Multi-Field Validation:** Regex email verification, 10-digit phone validation, full name validation, and intent scoring algorithm.
-- **Multi-Endpoint Dispatch System:** Dual API failover via Web3Forms, FormSubmit AJAX, custom CRM Webhooks, and CallMeBot WhatsApp automated confirmation notifications.
-
-### 4. 🖼️ Spatial Master Plans & VR Walkthrough (`FloorPlanModal.jsx` & `VirtualTourModal.jsx`)
-- **Architectural Blueprints:** Full schematic breakdowns for 3+1 BHK Resort Suites (2,250 – 2,650 Sq.Ft.) and 4+1 BHK Grand Presidential Suites (3,150 – 3,850 Sq.Ft.).
-- **360° VR Tour Modal:** Interactive virtual walkthrough with panoramic room controls.
+### 3. 📐 Spatial Floor Plans & Virtual Walkthroughs (`FloorPlanModal.jsx` & `VirtualTourModal.jsx`)
+- **Architectural Blueprints:** Detailed layouts for Boulevard Retail Shops, Anchor Stores, Food Court, and Serviced Studio Suites.
+- **Virtual Tour & Site Map:** Interactive project layout, zoning diagrams, and location maps.
 
 ---
 
@@ -51,43 +50,51 @@
 
 - **Frontend Framework:** React 19 (`react`, `react-dom`)
 - **Build Tooling:** Vite 8 (`vite`, `@vitejs/plugin-react`)
+- **AI Integration:** Google Gemini API (`@google/generative-ai` / REST integration with Search Grounding)
 - **Iconography:** Lucide React (`lucide-react`)
-- **Linting & Code Quality:** Oxlint (`oxlint`)
-- **Styling & Fonts:** Pure Inline CSS with Glassmorphic Design Token Palette + Google Fonts (`Plus Jakarta Sans`, `Outfit`, `Cormorant Garamond`)
+- **Code Quality & Linting:** Oxlint (`oxlint`)
+- **Styling:** CSS3 with Light Luxury Theme (`#FAF7F2` Ivory background, Gold accent borders)
 
 ---
 
 ## 🚀 Getting Started
 
 ### Prerequisites
-Ensure you have **Node.js (v18+)** and **npm** installed on your system.
+Ensure you have **Node.js (v18+)** and **npm** installed on your machine.
 
 ### Installation & Local Setup
 
 1. **Clone the Repository:**
    ```bash
-   git clone https://github.com/neerajjhaji/fab-luxe.git
-   cd fab-luxe
+   git clone https://github.com/neerajjhaji/kbwestwalk.git
+   cd kbwestwalk
    ```
 
-2. **Install Dependencies:**
+2. **Configure Environment Variables:**
+   Create a `.env` file in the root directory:
+   ```env
+   VITE_GEMINI_API_KEY=your_google_gemini_api_key_here
+   VITE_GEMINI_MODEL=gemini-2.0-flash
+   ```
+
+3. **Install Dependencies:**
    ```bash
    npm install
    ```
 
-3. **Run Development Server:**
+4. **Run Development Server:**
    ```bash
    npm run dev
    ```
-   The application will be accessible at `http://localhost:3000/`.
+   The application will start at `http://localhost:3000/`.
 
-4. **Build for Production:**
+5. **Build for Production:**
    ```bash
    npm run build
    ```
-   The compiled static files will be placed in the `dist/` folder.
+   The compiled production assets will be generated in `dist/`.
 
-5. **Linting Check:**
+6. **Lint Codebase:**
    ```bash
    npm run lint
    ```
@@ -97,39 +104,43 @@ Ensure you have **Node.js (v18+)** and **npm** installed on your system.
 ## 🗺️ Project Structure
 
 ```
-forbes-fab-luxe/
-├── index.html                  # Main entry file with SEO OpenGraph & JSON-LD Schemas
-├── package.json                # Dependency definitions & scripts
+kbwestwalk/
+├── index.html                  # Main HTML entry file with SEO meta tags
+├── package.json                # Dependencies and npm scripts
 ├── vite.config.js              # Vite server & port configuration
-├── public/                     # Static assets & SVG icons
+├── public/                     # Logos, floor plan images, and PDF brochures
 └── src/
-    ├── App.jsx                 # Master application layout & modal state handlers
-    ├── main.jsx                # React root mount entry
-    ├── index.css               # Global reset & keyframe animation styles
+    ├── App.jsx                 # Main layout and modal state coordinator
+    ├── main.jsx                # React root mount entry point
+    ├── App.css                 # Main app CSS styles
+    ├── index.css               # Global typography and base styles
+    ├── services/
+    │   └── geminiService.js    # Gemini AI API integration with search grounding
     ├── data/
-    │   ├── projectsData.js     # Single source of truth for typologies, pricing & specs
-    │   └── dispatchUtils.js    # Buyer scoring, CRM payload adapters & lead dispatch logic
+    │   ├── projectsData.js     # Single source of truth for pricing, specs & payment plans
+    │   └── marketPlatformsData.js # Real estate market benchmarks & platform metrics
     └── components/
-        ├── Navigation.jsx      # Sticky glassmorphic navbar with active section observer
-        ├── Hero.jsx            # Cinematic auto-play slideshow hero banner
-        ├── LiveBuyerTicker.jsx # Real-time RERA update ticker & helpline bar
-        ├── AIBotWidget.jsx     # Conversational AI Concierge, Matchmaker & CRM Vault
-        ├── Developments.jsx    # Flagship suite showcase grid
-        ├── AmenitiesSection.jsx# 75,000 Sq.Ft. clubhouse & resort amenity highlights
-        ├── Collections.jsx     # Architectural suite collection cards
-        ├── PropertyFinder.jsx  # Filterable suite finder & real-time EMI calculator
-        ├── ConnectivityMapSection.jsx # Location distance & connectivity matrix
-        ├── InvestmentROICalculator.jsx # Capital appreciation & rental yield projections
-        ├── SaintAmandSection.jsx       # Forbes 6-star hospitality privileges section
-        ├── PressAccolades.jsx          # Industry awards & media quotes
-        ├── BuyerJourneySteps.jsx       # 4-step buyer onboarding process
-        ├── Footer.jsx                  # Comprehensive footer with RERA disclaimer
-        └── Modals/                     # SiteVisitModal, BrochureModal, ConciergeModal,
-                                        # FloorPlanModal, SearchModal, DetailDrawer, etc.
+        ├── Navigation.jsx      # Sticky header navigation bar with brand logos
+        ├── Hero.jsx            # Project hero banner with key highlights
+        ├── TopUtilityBar.jsx   # Top announcement & RERA helpline bar
+        ├── LiveBuyerTicker.jsx # Real-time update ticker
+        ├── AIBotWidget.jsx     # AI Concierge Chatbot & Matchmaker drawer
+        ├── Developments.jsx    # Commercial floor and typology showcase
+        ├── PriceListSection.jsx # Floor-wise BSP price breakdown table
+        ├── AmenitiesSection.jsx # Key project amenities grid
+        ├── PropertyFinder.jsx  # Unit filter & financial calculator
+        ├── ConnectivityMapSection.jsx # Distance and location connectivity matrix
+        ├── InvestmentROICalculator.jsx # Rental yield & capital appreciation calculator
+        ├── Philosophy.jsx      # Developer legacy & CREDAI verification section
+        ├── PressAccolades.jsx  # Industry awards & media highlights
+        ├── BuyerJourneySteps.jsx # 4-step buyer onboarding guide
+        ├── Footer.jsx          # Footer with official RERA bank details & disclaimers
+        └── Modals/             # SiteVisitModal, BrochureModal, ConciergeModal,
+                                # FloorPlanModal, VirtualTourModal, SearchModal, etc.
 ```
 
 ---
 
-## 📄 License & Regulatory Disclaimer
+## 📄 Regulatory Disclaimer
 
-*Disclaimer: This website is for informational and portfolio showcase purposes. All project details, RERA specifications (`UPRERAPRJ995490`), and architectural layouts conform to official developer disclosures for Sector 4, Greater Noida West.*
+*Disclaimer: This website is for informational showcase purposes. All project details, RERA numbers (`UPRERAPRJ422027/01/2026`), promoter credentials (`UPRERAPRM414706`), pricing, and layout specifications strictly reflect official developer disclosures for KB West Walk, Ecotech-12, Greater Noida West.*
