@@ -1,0 +1,680 @@
+import os
+
+html_content = """<title>Tata AIA AVP Cloud AI Ops — 6-Month Preparation Strategy</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+  :root {
+    --bg-dark: #0B192C;
+    --bg-card: #1E293B;
+    --bg-cream: #F8F9FA;
+    --card-light: #FFFFFF;
+    --tata-blue: #0066CC;
+    --cyan: #00B4D8;
+    --cyan-light: #90E0EF;
+    --text-primary: #0F172A;
+    --text-muted: #64748B;
+    --text-light: #F8FAFC;
+    --accent-green: #10B981;
+    --border-blue: rgba(0, 102, 204, 0.3);
+    --shadow-luxury: 0 20px 40px rgba(0, 0, 0, 0.12);
+    --font-heading: 'Cinzel', serif;
+    --font-body: 'Plus Jakarta Sans', sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--font-body); background-color: var(--bg-dark); color: var(--text-light); line-height: 1.6; overflow-x: hidden; }
+
+  .top-bar {
+    position: sticky; top: 0; z-index: 1000;
+    background: rgba(11, 25, 44, 0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-blue);
+    padding: 14px 28px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+
+  .brand-logo { display: flex; align-items: center; gap: 12px; }
+  .brand-mark {
+    width: 38px; height: 38px; border-radius: 8px;
+    background: linear-gradient(135deg, var(--tata-blue), var(--cyan));
+    display: flex; align-items: center; justify-content: center;
+    color: #FFFFFF; font-family: var(--font-heading); font-weight: 800; font-size: 18px;
+  }
+
+  .brand-text h1 {
+    font-family: var(--font-heading); font-size: 16px; letter-spacing: 2px;
+    color: var(--cyan-light); text-transform: uppercase;
+  }
+  .brand-text p { font-size: 11px; color: #94A3B8; letter-spacing: 0.5px; }
+
+  .controls { display: flex; align-items: center; gap: 16px; }
+  .btn {
+    background: transparent; border: 1px solid var(--border-blue); color: var(--cyan-light);
+    padding: 8px 16px; border-radius: 6px; font-size: 12px; font-weight: 600;
+    cursor: pointer; transition: all 0.2s ease; display: inline-flex; align-items: center; gap: 6px;
+  }
+  .btn:hover { background: var(--tata-blue); color: #FFFFFF; border-color: var(--tata-blue); }
+  .btn-primary { background: var(--tata-blue); color: #FFFFFF; border: none; }
+  .btn-primary:hover { background: #0052A3; }
+
+  .deck-container { max-width: 1440px; margin: 20px auto 60px; padding: 0 24px; }
+
+  .slide-tabs {
+    display: flex; gap: 8px; overflow-x: auto; padding-bottom: 12px; margin-bottom: 24px;
+    scrollbar-width: thin; scrollbar-color: var(--tata-blue) transparent;
+  }
+
+  .slide-tab {
+    background: var(--bg-card); border: 1px solid rgba(255, 255, 255, 0.08);
+    color: #94A3B8; padding: 10px 18px; border-radius: 8px; font-size: 12px; font-weight: 600;
+    white-space: nowrap; cursor: pointer; transition: all 0.2s ease;
+  }
+  .slide-tab:hover { border-color: var(--tata-blue); color: var(--cyan-light); }
+  .slide-tab.active {
+    background: linear-gradient(135deg, rgba(0, 102, 204, 0.3), rgba(0, 180, 216, 0.2));
+    border-color: var(--cyan); color: var(--cyan-light);
+    box-shadow: 0 4px 12px rgba(0, 180, 216, 0.2);
+  }
+
+  .slide-card {
+    display: none; background: var(--bg-cream); color: var(--text-primary);
+    border-radius: 16px; padding: 36px; box-shadow: var(--shadow-luxury);
+    animation: fadeIn 0.4s ease;
+  }
+  .slide-card.active { display: block; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .slide-header {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 24px; padding-bottom: 16px; border-bottom: 2px solid #E2E8F0;
+  }
+
+  .slide-title-group h2 { font-family: var(--font-heading); font-size: 26px; color: var(--bg-dark); margin-bottom: 6px; }
+  .slide-title-group p { font-size: 14px; color: var(--text-muted); }
+
+  .slide-badge {
+    background: var(--bg-dark); color: var(--cyan);
+    padding: 6px 14px; border-radius: 20px; font-size: 11px; font-weight: 700;
+    letter-spacing: 1px; text-transform: uppercase;
+  }
+
+  .slide-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start;
+  }
+  @media (max-width: 1024px) { .slide-grid { grid-template-columns: 1fr; } }
+
+  .info-box {
+    background: #FFFFFF; border-radius: 12px; padding: 24px;
+    border: 1px solid #E2E8F0; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  }
+
+  .info-box-title {
+    font-size: 15px; font-weight: 700; color: var(--tata-blue); margin-bottom: 14px;
+    display: flex; align-items: center; gap: 8px;
+  }
+
+  .info-list {
+    list-style: none; display: flex; flex-direction: column; gap: 10px;
+  }
+
+  .info-list li {
+    font-size: 13px; color: #334155; display: flex; align-items: flex-start; gap: 8px; line-height: 1.5;
+  }
+
+  .info-list li::before { content: "•"; color: var(--tata-blue); font-weight: bold; }
+
+  .dark-box {
+    background: var(--bg-dark); color: #FFFFFF; border-radius: 12px; padding: 24px;
+    border: 1px solid var(--cyan); box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  }
+
+  .dark-box-title {
+    font-size: 15px; font-weight: 700; color: var(--cyan); margin-bottom: 14px;
+    display: flex; align-items: center; gap: 8px;
+  }
+
+  .dark-list {
+    list-style: none; display: flex; flex-direction: column; gap: 10px;
+  }
+
+  .dark-list li {
+    font-size: 13px; color: #E2E8F0; display: flex; align-items: flex-start; gap: 8px; line-height: 1.5;
+  }
+
+  .dark-list li::before { content: "➔"; color: var(--cyan); }
+
+  .matrix-table {
+    width: 100%; border-collapse: collapse; margin-top: 16px; background: #FFFFFF;
+    border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  }
+
+  .matrix-table th {
+    background: var(--bg-dark); color: var(--cyan); text-align: left;
+    padding: 14px 18px; font-size: 12px; font-weight: 700; letter-spacing: 0.5px;
+  }
+
+  .matrix-table td {
+    padding: 14px 18px; border-bottom: 1px solid #E2E8F0; font-size: 13px; color: #1E293B;
+  }
+
+  .matrix-table tr:nth-child(even) { background: #F1F5F9; }
+
+  .status-badge {
+    background: rgba(16, 185, 129, 0.12); color: var(--accent-green);
+    padding: 4px 10px; border-radius: 12px; font-size: 11px; font-weight: 700;
+  }
+
+  .slide-footer-controls {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-top: 30px; padding-top: 20px; border-top: 1px solid #E2E8F0;
+  }
+
+  .counter { font-size: 13px; font-weight: 600; color: var(--text-muted); }
+  .nav-btns { display: flex; gap: 12px; }
+</style>
+
+<div class="top-bar">
+  <div class="brand-logo">
+    <div class="brand-mark">T</div>
+    <div class="brand-text">
+      <h1>Tata AIA Life Insurance</h1>
+      <p>6-Month Preparation Deck • AVP Cloud AI Ops</p>
+    </div>
+  </div>
+  <div class="controls">
+    <span style="font-size: 12px; color: #94A3B8;">Keyboard: ← → Arrow keys</span>
+    <button class="btn" onclick="toggleFullscreen()">Fullscreen</button>
+  </div>
+</div>
+
+<div class="deck-container">
+  <div class="slide-tabs" id="slideTabs">
+    <button class="slide-tab active" onclick="goToSlide(0)">01. Executive Overview</button>
+    <button class="slide-tab" onclick="goToSlide(1)">02. Role & JD Mapping</button>
+    <button class="slide-tab" onclick="goToSlide(2)">03. Month 1: Azure Foundation</button>
+    <button class="slide-tab" onclick="goToSlide(3)">04. Month 2: Delta Lake & CDC</button>
+    <button class="slide-tab" onclick="goToSlide(4)">05. Month 3: Cloud AI Ops</button>
+    <button class="slide-tab" onclick="goToSlide(5)">06. Month 4: CI/CD & Catalog</button>
+    <button class="slide-tab" onclick="goToSlide(6)">07. Month 5: IRDAI & Security</button>
+    <button class="slide-tab" onclick="goToSlide(7)">08. Month 6: Mentorship & ARB</button>
+    <button class="slide-tab" onclick="goToSlide(8)">09. Skill Matrix Checklist</button>
+    <button class="slide-tab" onclick="goToSlide(9)">10. 30-60-90 Day Execution</button>
+  </div>
+
+  <!-- SLIDE 0: Overview -->
+  <div class="slide-card active" id="slide-0">
+    <div class="slide-header">
+      <div class="slide-title-group">
+        <h2>Tata AIA Life Insurance — AVP Cloud AI Ops Roadmap</h2>
+        <p>6-Month Preparation Strategy for Thane / Mumbai Role</p>
+      </div>
+      <span class="slide-badge">EXECUTIVE SUMMARY</span>
+    </div>
+
+    <div class="slide-grid">
+      <div class="dark-box">
+        <div class="dark-box-title">👑 Strategic Role Alignment for Tata AIA</div>
+        <ul class="dark-list">
+          <li><strong>Enterprise Scale:</strong> Leading Cloud AI Ops architecture for Tata AIA's core policy administration, claims, and telemetry systems.</li>
+          <li><strong>Mandatory Must-Have:</strong> Deep mastery of Azure Delta Lake, Big Data processing, and real-time CDC (Change Data Capture).</li>
+          <li><strong>AI Ops Innovation:</strong> Azure Cognitive Services, Azure OpenAI document AI, and automated AI Ops telemetry monitoring.</li>
+          <li><strong>Hybrid Governance:</strong> Azure Stack HCI/Hub, Azure Sentinel SIEM, and IRDAI insurance security compliance.</li>
+        </ul>
+      </div>
+
+      <div class="info-box">
+        <div class="info-box-title">🎯 6-Month Transformation Milestones</div>
+        <ul class="info-list">
+          <li><strong>Month 1:</strong> Azure Core Landing Zones, Hyper-V Hybrid Cloud, Azure AD & Landing Zone Architecture.</li>
+          <li><strong>Month 2:</strong> Azure Delta Lake (Medallion Architecture), Databricks, CDC pipelines & Synapse.</li>
+          <li><strong>Month 3:</strong> Cloud AI Ops, Cognitive Services, Azure OpenAI & Sentinel Auto-remediation.</li>
+          <li><strong>Month 4:</strong> Azure DevOps CI/CD pipelines, IaC (Bicep/Terraform) & Enterprise Service Catalog.</li>
+          <li><strong>Month 5:</strong> IRDAI Cloud Compliance, Enterprise Zero-Trust Security & Risk Mitigation.</li>
+          <li><strong>Month 6:</strong> Java/SOA to Cloud-Native Mentorship, ARB Leadership & 30-60-90 Day Execution Plan.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="slide-footer-controls">
+      <span class="counter">Slide 1 of 10</span>
+      <div class="nav-btns"><button class="btn btn-primary" onclick="goToSlide(1)">Next Slide →</button></div>
+    </div>
+  </div>
+
+  <!-- SLIDE 1: JD Mapping -->
+  <div class="slide-card" id="slide-1">
+    <div class="slide-header">
+      <div class="slide-title-group">
+        <h2>01. Executive Role Mapping & JD Requirements</h2>
+        <p>Aligning Leadership Expectations with Technical Expertise</p>
+      </div>
+      <span class="slide-badge">JD ANALYSIS</span>
+    </div>
+
+    <div class="slide-grid">
+      <div class="info-box">
+        <div class="info-box-title">📋 Leadership & Architecture Responsibilities</div>
+        <ul class="info-list">
+          <li>Align business solutions with Alliance standards & customer specifications.</li>
+          <li>Create reusable Service Catalog components to accelerate enterprise delivery.</li>
+          <li>Drive DevOps toolchain implementation for end-to-end CI/CD automation.</li>
+          <li>Perform capacity planning, technical cost vs performance trade-off analysis.</li>
+          <li>Liaise between Business & DC/IT delivery verticals on design patterns.</li>
+          <li>Manage IT & Cloud design risks, adhering to strict IRDAI governance.</li>
+        </ul>
+      </div>
+
+      <div class="dark-box">
+        <div class="dark-box-title">⚙️ Core Technical Mandates</div>
+        <ul class="dark-list">
+          <li>7+ Years Azure IaaS, Monitoring, Cloud Backup & Site Recovery (ASR).</li>
+          <li>Must-Have Expertise: Azure Delta Lake, Big Data & Change Data Capture (CDC).</li>
+          <li>Azure Cognitive Services, Azure OpenAI & Intelligent AI Ops Telemetry.</li>
+          <li>Azure Stack Hub / HCI Hybrid Cloud & Virtual Networking (Hyper-V).</li>
+          <li>Azure AD, Azure MECM (SCCM), Update Management & Sentinel SIEM.</li>
+          <li>Mentoring Java/J2EE/SOA teams toward Cloud-Native Microservices.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="slide-footer-controls">
+      <span class="counter">Slide 2 of 10</span>
+      <div class="nav-btns"><button class="btn" onclick="goToSlide(0)">← Previous</button><button class="btn btn-primary" onclick="goToSlide(2)">Next Slide →</button></div>
+    </div>
+  </div>
+
+  <!-- SLIDE 2: Month 1 -->
+  <div class="slide-card" id="slide-2">
+    <div class="slide-header">
+      <div class="slide-title-group">
+        <h2>02. Month 1: Azure Foundation & Hybrid Infrastructure</h2>
+        <p>Core IaaS, Landing Zones, Azure Stack HCI & Hybrid Network Setup</p>
+      </div>
+      <span class="slide-badge">MONTH 1</span>
+    </div>
+
+    <div class="slide-grid">
+      <div class="info-box">
+        <div class="info-box-title">🎯 Learning Objectives & Key Focus Areas</div>
+        <ul class="info-list">
+          <li>Master Azure Enterprise Landing Zone architecture & Subscription topology.</li>
+          <li>Deep dive into Azure Stack Hub & Azure Stack HCI hybrid deployment models.</li>
+          <li>Understand Hyper-V virtual networking, Azure AD tenant structures & RBAC.</li>
+          <li>Explore Azure Backup & Azure Site Recovery (ASR) disaster recovery topologies.</li>
+          <li>Study Tata AIA Life Insurance core domain: Policy Admin, Claims & Tele-underwriting.</li>
+        </ul>
+      </div>
+
+      <div class="dark-box">
+        <div class="dark-box-title">🚀 Hands-on Deliverables & Milestone</div>
+        <ul class="dark-list">
+          <li>Build a hybrid connectivity POC connecting on-prem Hyper-V to Azure VNet.</li>
+          <li>Configure Azure Site Recovery (ASR) vault with automated failover testing script.</li>
+          <li>Draft Enterprise Azure Landing Zone architecture diagram.</li>
+          <li>Implement Azure Update Management & MECM hybrid patch management policy.</li>
+          <li>Milestone Target: Azure Solutions Architect (AZ-305) hybrid refresher.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="slide-footer-controls">
+      <span class="counter">Slide 3 of 10</span>
+      <div class="nav-btns"><button class="btn" onclick="goToSlide(1)">← Previous</button><button class="btn btn-primary" onclick="goToSlide(3)">Next Slide →</button></div>
+    </div>
+  </div>
+
+  <!-- SLIDE 3: Month 2 -->
+  <div class="slide-card" id="slide-3">
+    <div class="slide-header">
+      <div class="slide-title-group">
+        <h2>03. Month 2: Azure Delta Lake, Big Data & Real-Time CDC</h2>
+        <p>Medallion Architecture, Databricks, CDC Streams & Data Factory</p>
+      </div>
+      <span class="slide-badge">MONTH 2</span>
+    </div>
+
+    <div class="slide-grid">
+      <div class="info-box">
+        <div class="info-box-title">🎯 Learning Objectives & Key Focus Areas</div>
+        <ul class="info-list">
+          <li>Master Medallion Architecture in Delta Lake (Bronze -> Silver -> Gold).</li>
+          <li>Implement Change Data Capture (CDC) via Debezium / Qlik / Azure Data Factory.</li>
+          <li>Azure Databricks & PySpark optimization for real-time telemetry & policy logs.</li>
+          <li>Azure SQL Database, Synapse Analytics & ADLS Gen2 storage lifecycle rules.</li>
+          <li>Big Data capacity management & cost optimization for high-volume logs.</li>
+        </ul>
+      </div>
+
+      <div class="dark-box">
+        <div class="dark-box-title">🚀 Hands-on Deliverables & Milestone</div>
+        <ul class="dark-list">
+          <li>Construct an end-to-end CDC pipeline capturing SQL transactions into Delta Lake.</li>
+          <li>Optimize PySpark/Delta query performance with Z-Ordering & Liquid Clustering.</li>
+          <li>Build real-time streaming ingest pipeline for insurance claims & tele-underwriting logs.</li>
+          <li>Design cost tiering model for ADLS Gen2 storage lifecycle (Hot -> Archive).</li>
+          <li>Milestone Target: Azure Data Engineer (DP-203) & Delta Lake Mastery.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="slide-footer-controls">
+      <span class="counter">Slide 4 of 10</span>
+      <div class="nav-btns"><button class="btn" onclick="goToSlide(2)">← Previous</button><button class="btn btn-primary" onclick="goToSlide(4)">Next Slide →</button></div>
+    </div>
+  </div>
+
+  <!-- SLIDE 4: Month 3 -->
+  <div class="slide-card" id="slide-4">
+    <div class="slide-header">
+      <div class="slide-title-group">
+        <h2>04. Month 3: Cloud AI Ops, Cognitive Services & Sentinel</h2>
+        <p>AI Auto-Remediation, Azure OpenAI Document AI & Anomaly Analytics</p>
+      </div>
+      <span class="slide-badge">MONTH 3</span>
+    </div>
+
+    <div class="slide-grid">
+      <div class="info-box">
+        <div class="info-box-title">🎯 Learning Objectives & Key Focus Areas</div>
+        <ul class="info-list">
+          <li>Azure Cognitive Services (Document Intelligence, Vision, Language, AI Search).</li>
+          <li>Azure OpenAI & LLM integration for automated claim document processing.</li>
+          <li>AI Ops: Anomaly detection in application telemetry via Azure Monitor & Log Analytics.</li>
+          <li>Azure Sentinel SIEM integration for security event monitoring & auto-playbooks.</li>
+          <li>MLOps pipelines: Model registration, deployment & drift monitoring in Azure ML.</li>
+        </ul>
+      </div>
+
+      <div class="dark-box">
+        <div class="dark-box-title">🚀 Hands-on Deliverables & Milestone</div>
+        <ul class="dark-list">
+          <li>Build AI Ops pipeline auto-detecting latency anomalies & triggering self-healing webhooks.</li>
+          <li>Develop POC for automated OCR & claim form classification using Azure Document Intelligence.</li>
+          <li>Deploy Azure Sentinel incident response playbook using Azure Logic Apps.</li>
+          <li>Establish automated capacity prediction model for cloud server scaling.</li>
+          <li>Milestone Target: Complete Azure AI Engineer (AI-102) & AI Ops Playbook.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="slide-footer-controls">
+      <span class="counter">Slide 5 of 10</span>
+      <div class="nav-btns"><button class="btn" onclick="goToSlide(3)">← Previous</button><button class="btn btn-primary" onclick="goToSlide(5)">Next Slide →</button></div>
+    </div>
+  </div>
+
+  <!-- SLIDE 5: Month 4 -->
+  <div class="slide-card" id="slide-5">
+    <div class="slide-header">
+      <div class="slide-title-group">
+        <h2>05. Month 4: Enterprise DevOps, CI/CD & Service Catalog</h2>
+        <p>Azure DevOps YAML, IaC (Bicep/Terraform) & Service Catalog Standardization</p>
+      </div>
+      <span class="slide-badge">MONTH 4</span>
+    </div>
+
+    <div class="slide-grid">
+      <div class="info-box">
+        <div class="info-box-title">🎯 Learning Objectives & Key Focus Areas</div>
+        <ul class="info-list">
+          <li>Azure DevOps Pipelines (YAML), GitHub Actions & IaC (Terraform/Bicep).</li>
+          <li>Reusable Service Catalog development: Modular IaC templates for dev teams.</li>
+          <li>Integration Testing & Automated Release Quality Gates in CI/CD pipelines.</li>
+          <li>Configuration Management DB (CMDB) & Azure Resource Graph tracking.</li>
+          <li>Capacity Planning & Chaos Engineering resilience testing.</li>
+        </ul>
+      </div>
+
+      <div class="dark-box">
+        <div class="dark-box-title">🚀 Hands-on Deliverables & Milestone</div>
+        <ul class="dark-list">
+          <li>Build an Enterprise Service Catalog repository containing approved IaC modules.</li>
+          <li>Create multi-stage YAML pipeline with automated security scan (Checkov/SonarQube).</li>
+          <li>Implement automated integration testing framework for cloud service deployments.</li>
+          <li>Establish automated capacity alerts & auto-scaling policies for peak periods.</li>
+          <li>Milestone Target: Complete DevOps Engineer Expert (AZ-400) & Service Catalog.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="slide-footer-controls">
+      <span class="counter">Slide 6 of 10</span>
+      <div class="nav-btns"><button class="btn" onclick="goToSlide(4)">← Previous</button><button class="btn btn-primary" onclick="goToSlide(6)">Next Slide →</button></div>
+    </div>
+  </div>
+
+  <!-- SLIDE 6: Month 5 -->
+  <div class="slide-card" id="slide-6">
+    <div class="slide-header">
+      <div class="slide-title-group">
+        <h2>06. Month 5: Life Insurance Architecture & IRDAI Governance</h2>
+        <p>Cloud Security, Risk Mitigation, Zero-Trust Topology & Trade-Off Analysis</p>
+      </div>
+      <span class="slide-badge">MONTH 5</span>
+    </div>
+
+    <div class="slide-grid">
+      <div class="info-box">
+        <div class="info-box-title">🎯 Learning Objectives & Key Focus Areas</div>
+        <ul class="info-list">
+          <li>IRDAI Cloud Security Guidelines & Data Residency requirements for Life Insurance.</li>
+          <li>Enterprise Security Architecture: Sentinel, Key Vault, Private Link & WAF.</li>
+          <li>Risk mitigation frameworks for non-stated requirements (availability, latency).</li>
+          <li>Trade-off analysis methodology: Cost vs Scalability vs Security in cloud design.</li>
+          <li>Coordination workflows between IT, Data Center (DC), Cloud & Business Verticals.</li>
+        </ul>
+      </div>
+
+      <div class="dark-box">
+        <div class="dark-box-title">🚀 Hands-on Deliverables & Milestone</div>
+        <ul class="dark-list">
+          <li>Draft IRDAI Cloud Compliance Audit Checklist covering data encryption & sovereignty.</li>
+          <li>Author a formal Solution Architecture Document (SAD) including trade-off matrices.</li>
+          <li>Implement Zero-Trust network topology using Azure Private Link & Firewall Premium.</li>
+          <li>Conduct DR drill simulation (RTO < 15 mins, RPO < 5 mins).</li>
+          <li>Milestone Target: Cybersecurity Architect (SC-100) & IRDAI Governance.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="slide-footer-controls">
+      <span class="counter">Slide 7 of 10</span>
+      <div class="nav-btns"><button class="btn" onclick="goToSlide(5)">← Previous</button><button class="btn btn-primary" onclick="goToSlide(7)">Next Slide →</button></div>
+    </div>
+  </div>
+
+  <!-- SLIDE 7: Month 6 -->
+  <div class="slide-card" id="slide-7">
+    <div class="slide-header">
+      <div class="slide-title-group">
+        <h2>07. Month 6: Executive Leadership & Team Mentorship</h2>
+        <p>Java/SOA Modernization, ARB Submissions & Effort Estimation</p>
+      </div>
+      <span class="slide-badge">MONTH 6</span>
+    </div>
+
+    <div class="slide-grid">
+      <div class="info-box">
+        <div class="info-box-title">🎯 Learning Objectives & Key Focus Areas</div>
+        <ul class="info-list">
+          <li>Mentoring legacy Java/J2EE/SOA teams toward Cloud-Native Spring Boot / Microservices.</li>
+          <li>Architecture Review Board (ARB) presentation & stakeholder management skills.</li>
+          <li>Sequencing project deliverables to prevent rework & fit building blocks together.</li>
+          <li>Vendor & Alliance relationship management, effort estimation & capacity planning.</li>
+          <li>30-60-90 Day Execution Vision on taking charge at Tata AIA Thane.</li>
+        </ul>
+      </div>
+
+      <div class="dark-box">
+        <div class="dark-box-title">🚀 Hands-on Deliverables & Milestone</div>
+        <ul class="dark-list">
+          <li>Develop "Java/SOA to Azure Microservices" Migration Curriculum for developers.</li>
+          <li>Establish Architecture Review Board (ARB) submission template & verification checklist.</li>
+          <li>Create effort estimation model (T-Shirt sizing & Story Point calibration).</li>
+          <li>Conduct mock executive presentation for cloud transformation strategy.</li>
+          <li>Milestone Target: Complete Leadership Readiness & Mock ARB Defense.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="slide-footer-controls">
+      <span class="counter">Slide 8 of 10</span>
+      <div class="nav-btns"><button class="btn" onclick="goToSlide(6)">← Previous</button><button class="btn btn-primary" onclick="goToSlide(8)">Next Slide →</button></div>
+    </div>
+  </div>
+
+  <!-- SLIDE 8: Skill Matrix -->
+  <div class="slide-card" id="slide-8">
+    <div class="slide-header">
+      <div class="slide-title-group">
+        <h2>08. Technical & Competency Mastery Matrix</h2>
+        <p>6-Month Skill Target & Deliverable Readiness Checklist</p>
+      </div>
+      <span class="slide-badge">SKILL MATRIX</span>
+    </div>
+
+    <table class="matrix-table">
+      <thead>
+        <tr>
+          <th>Domain Area</th>
+          <th>Required Skill in JD</th>
+          <th>Target Mastery Output</th>
+          <th>Status Target</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Delta Lake & CDC</strong></td>
+          <td>Azure Delta Lake, Big Data, CDC, Synapse Analytics</td>
+          <td>Real-time streaming CDC pipeline to Medallion Delta Lake</td>
+          <td><span class="status-badge">Month 2 Complete</span></td>
+        </tr>
+        <tr>
+          <td><strong>Cloud AI Ops</strong></td>
+          <td>Cognitive Services, AI/ML, AI Ops Monitoring</td>
+          <td>AI Ops auto-healing anomaly detection & Document AI</td>
+          <td><span class="status-badge">Month 3 Complete</span></td>
+        </tr>
+        <tr>
+          <td><strong>DevOps & Catalog</strong></td>
+          <td>Azure DevOps, IaC (Bicep), Service Catalog</td>
+          <td>Enterprise Bicep Service Catalog & YAML pipeline</td>
+          <td><span class="status-badge">Month 4 Complete</span></td>
+        </tr>
+        <tr>
+          <td><strong>Security & IRDAI</strong></td>
+          <td>Azure Sentinel, Hybrid AD, IRDAI Security Compliance</td>
+          <td>IRDAI Compliant Zero-Trust Cloud Architecture SAD</td>
+          <td><span class="status-badge">Month 5 Complete</span></td>
+        </tr>
+        <tr>
+          <td><strong>Mentorship & ARB</strong></td>
+          <td>Java/SOA Mentoring, ARB, Effort Estimation</td>
+          <td>Modernization curriculum & Effort Estimation Tool</td>
+          <td><span class="status-badge">Month 6 Complete</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="slide-footer-controls">
+      <span class="counter">Slide 9 of 10</span>
+      <div class="nav-btns"><button class="btn" onclick="goToSlide(7)">← Previous</button><button class="btn btn-primary" onclick="goToSlide(9)">Next Slide →</button></div>
+    </div>
+  </div>
+
+  <!-- SLIDE 9: 30-60-90 Day Plan -->
+  <div class="slide-card" id="slide-9">
+    <div class="slide-header">
+      <div class="slide-title-group">
+        <h2>09. 30-60-90 Day Execution Plan on Joining Tata AIA</h2>
+        <p>Onboarding Roadmap as AVP - Cloud AI Ops at Thane / Mumbai</p>
+      </div>
+      <span class="slide-badge">30-60-90 PLAN</span>
+    </div>
+
+    <div class="slide-grid">
+      <div class="info-box">
+        <div class="info-box-title">Days 1 to 30: Assessment & Governance Audit</div>
+        <ul class="info-list">
+          <li>Audit existing Azure infrastructure, Delta Lake CDC pipelines & Sentinel setup.</li>
+          <li>Meet key Business & DC/IT stakeholders to identify architectural pain points.</li>
+          <li>Review existing Java/SOA applications and cloud migration backlog.</li>
+          <li>Evaluate current DevOps pipeline security and Service Catalog adoption.</li>
+          <li><strong>Deliverable:</strong> Baseline Cloud & AI Ops Maturity Assessment.</li>
+        </ul>
+      </div>
+
+      <div class="dark-box">
+        <div class="dark-box-title">Days 31 to 90: Standardisation & Scale</div>
+        <ul class="dark-list">
+          <li><strong>Days 31-60:</strong> Launch Bicep/Terraform Service Catalog & AI Ops pilot.</li>
+          <li><strong>Days 31-60:</strong> Implement automated CDC pipeline optimizations for Delta Lake.</li>
+          <li><strong>Days 61-90:</strong> Establish Architecture Review Board (ARB) & IRDAI compliance gates.</li>
+          <li><strong>Days 61-90:</strong> Roll out developer mentorship program for Java to Cloud Native microservices.</li>
+          <li><strong>Deliverable:</strong> Fully Operational Cloud AI Ops Framework at Tata AIA.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="slide-footer-controls">
+      <span class="counter">Slide 10 of 10</span>
+      <div class="nav-btns">
+        <button class="btn" onclick="goToSlide(8)">← Previous</button>
+        <button class="btn btn-primary" onclick="goToSlide(0)">Restart Deck ↺</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  let currentSlide = 0;
+  const totalSlides = 10;
+
+  function goToSlide(index) {
+    if (index < 0 || index >= totalSlides) return;
+    for (let i = 0; i < totalSlides; i++) {
+      const card = document.getElementById('slide-' + i);
+      if (card) card.classList.remove('active');
+    }
+    const tabs = document.querySelectorAll('.slide-tab');
+    tabs.forEach(tab => tab.classList.remove('active'));
+
+    currentSlide = index;
+    const activeCard = document.getElementById('slide-' + currentSlide);
+    if (activeCard) activeCard.classList.add('active');
+    if (tabs[currentSlide]) {
+      tabs[currentSlide].classList.add('active');
+      tabs[currentSlide].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'ArrowRight' || e.key === 'Space') {
+      goToSlide((currentSlide + 1) % totalSlides);
+    } else if (e.key === 'ArrowLeft') {
+      goToSlide((currentSlide - 1 + totalSlides));
+    }
+  });
+
+  function toggleFullscreen() {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen().catch(err => {});
+    } else {
+      if (document.exitFullscreen) { document.exitFullscreen(); }
+    }
+  }
+</script>
+"""
+
+out_path = '/Users/neeraj.jha/forbes-fab-luxe/tata_aia_avp_cloud_aiops_plan.html'
+with open(out_path, 'w', encoding='utf-8') as f:
+    f.write(html_content)
+
+print(f"Interactive HTML presentation successfully saved to {out_path}")

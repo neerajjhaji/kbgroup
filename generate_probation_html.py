@@ -1,0 +1,510 @@
+import os
+
+html_content = """<title>Tata AIA AVP Cloud AI Ops — 30-60-90 Day Probation Plan</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+  :root {
+    --bg-dark: #0B192C;
+    --bg-card: #1E293B;
+    --bg-cream: #F8F9FA;
+    --card-light: #FFFFFF;
+    --tata-blue: #0066CC;
+    --cyan: #00B4D8;
+    --cyan-light: #90E0EF;
+    --text-primary: #0F172A;
+    --text-muted: #64748B;
+    --text-light: #F8FAFC;
+    --accent-green: #10B981;
+    --border-blue: rgba(0, 102, 204, 0.3);
+    --shadow-luxury: 0 20px 40px rgba(0, 0, 0, 0.12);
+    --font-heading: 'Cinzel', serif;
+    --font-body: 'Plus Jakarta Sans', sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--font-body); background-color: var(--bg-dark); color: var(--text-light); line-height: 1.6; overflow-x: hidden; }
+
+  .top-bar {
+    position: sticky; top: 0; z-index: 1000;
+    background: rgba(11, 25, 44, 0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-blue);
+    padding: 14px 28px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+
+  .brand-logo { display: flex; align-items: center; gap: 12px; }
+  .brand-mark {
+    width: 38px; height: 38px; border-radius: 8px;
+    background: linear-gradient(135deg, var(--tata-blue), var(--cyan));
+    display: flex; align-items: center; justify-content: center;
+    color: #FFFFFF; font-family: var(--font-heading); font-weight: 800; font-size: 18px;
+  }
+
+  .brand-text h1 {
+    font-family: var(--font-heading); font-size: 16px; letter-spacing: 2px;
+    color: var(--cyan-light); text-transform: uppercase;
+  }
+  .brand-text p { font-size: 11px; color: #94A3B8; letter-spacing: 0.5px; }
+
+  .controls { display: flex; align-items: center; gap: 16px; }
+  .btn {
+    background: transparent; border: 1px solid var(--border-blue); color: var(--cyan-light);
+    padding: 8px 16px; border-radius: 6px; font-size: 12px; font-weight: 600;
+    cursor: pointer; transition: all 0.2s ease; display: inline-flex; align-items: center; gap: 6px;
+  }
+  .btn:hover { background: var(--tata-blue); color: #FFFFFF; border-color: var(--tata-blue); }
+  .btn-primary { background: var(--tata-blue); color: #FFFFFF; border: none; }
+  .btn-primary:hover { background: #0052A3; }
+
+  .deck-container { max-width: 1440px; margin: 20px auto 60px; padding: 0 24px; }
+
+  .slide-tabs {
+    display: flex; gap: 8px; overflow-x: auto; padding-bottom: 12px; margin-bottom: 24px;
+    scrollbar-width: thin; scrollbar-color: var(--tata-blue) transparent;
+  }
+
+  .slide-tab {
+    background: var(--bg-card); border: 1px solid rgba(255, 255, 255, 0.08);
+    color: #94A3B8; padding: 10px 18px; border-radius: 8px; font-size: 12px; font-weight: 600;
+    white-space: nowrap; cursor: pointer; transition: all 0.2s ease;
+  }
+  .slide-tab:hover { border-color: var(--tata-blue); color: var(--cyan-light); }
+  .slide-tab.active {
+    background: linear-gradient(135deg, rgba(0, 102, 204, 0.3), rgba(0, 180, 216, 0.2));
+    border-color: var(--cyan); color: var(--cyan-light);
+    box-shadow: 0 4px 12px rgba(0, 180, 216, 0.2);
+  }
+
+  .slide-card {
+    display: none; background: var(--bg-cream); color: var(--text-primary);
+    border-radius: 16px; padding: 36px; box-shadow: var(--shadow-luxury);
+    animation: fadeIn 0.4s ease;
+  }
+  .slide-card.active { display: block; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .slide-header {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 24px; padding-bottom: 16px; border-bottom: 2px solid #E2E8F0;
+  }
+
+  .slide-title-group h2 { font-family: var(--font-heading); font-size: 26px; color: var(--bg-dark); margin-bottom: 6px; }
+  .slide-title-group p { font-size: 14px; color: var(--text-muted); }
+
+  .slide-badge {
+    background: var(--bg-dark); color: var(--cyan);
+    padding: 6px 14px; border-radius: 20px; font-size: 11px; font-weight: 700;
+    letter-spacing: 1px; text-transform: uppercase;
+  }
+
+  .slide-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start;
+  }
+  @media (max-width: 1024px) { .slide-grid { grid-template-columns: 1fr; } }
+
+  .info-box {
+    background: #FFFFFF; border-radius: 12px; padding: 24px;
+    border: 1px solid #E2E8F0; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  }
+
+  .info-box-title {
+    font-size: 15px; font-weight: 700; color: var(--tata-blue); margin-bottom: 14px;
+    display: flex; align-items: center; gap: 8px;
+  }
+
+  .info-list {
+    list-style: none; display: flex; flex-direction: column; gap: 10px;
+  }
+
+  .info-list li {
+    font-size: 13px; color: #334155; display: flex; align-items: flex-start; gap: 8px; line-height: 1.5;
+  }
+
+  .info-list li::before { content: "•"; color: var(--tata-blue); font-weight: bold; }
+
+  .dark-box {
+    background: var(--bg-dark); color: #FFFFFF; border-radius: 12px; padding: 24px;
+    border: 1px solid var(--cyan); box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  }
+
+  .dark-box-title {
+    font-size: 15px; font-weight: 700; color: var(--cyan); margin-bottom: 14px;
+    display: flex; align-items: center; gap: 8px;
+  }
+
+  .dark-list {
+    list-style: none; display: flex; flex-direction: column; gap: 10px;
+  }
+
+  .dark-list li {
+    font-size: 13px; color: #E2E8F0; display: flex; align-items: flex-start; gap: 8px; line-height: 1.5;
+  }
+
+  .dark-list li::before { content: "➔"; color: var(--cyan); }
+
+  .matrix-table {
+    width: 100%; border-collapse: collapse; margin-top: 16px; background: #FFFFFF;
+    border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  }
+
+  .matrix-table th {
+    background: var(--bg-dark); color: var(--cyan); text-align: left;
+    padding: 14px 18px; font-size: 12px; font-weight: 700; letter-spacing: 0.5px;
+  }
+
+  .matrix-table td {
+    padding: 14px 18px; border-bottom: 1px solid #E2E8F0; font-size: 13px; color: #1E293B;
+  }
+
+  .matrix-table tr:nth-child(even) { background: #F1F5F9; }
+
+  .status-badge {
+    background: rgba(16, 185, 129, 0.12); color: var(--accent-green);
+    padding: 4px 10px; border-radius: 12px; font-size: 11px; font-weight: 700;
+  }
+
+  .slide-footer-controls {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-top: 30px; padding-top: 20px; border-top: 1px solid #E2E8F0;
+  }
+
+  .counter { font-size: 13px; font-weight: 600; color: var(--text-muted); }
+  .nav-btns { display: flex; gap: 12px; }
+</style>
+
+<div class="top-bar">
+  <div class="brand-logo">
+    <div class="brand-mark">T</div>
+    <div class="brand-text">
+      <h1>Tata AIA Life Insurance</h1>
+      <p>30-60-90 Day Probation & Confirmation Deck • AVP Cloud AI Ops</p>
+    </div>
+  </div>
+  <div class="controls">
+    <span style="font-size: 12px; color: #94A3B8;">Keyboard: ← → Arrow keys</span>
+    <button class="btn" onclick="toggleFullscreen()">Fullscreen</button>
+  </div>
+</div>
+
+<div class="deck-container">
+  <div class="slide-tabs" id="slideTabs">
+    <button class="slide-tab active" onclick="goToSlide(0)">01. Probation Strategy</button>
+    <button class="slide-tab" onclick="goToSlide(1)">02. Days 1–30: Audit & Quick Wins</button>
+    <button class="slide-tab" onclick="goToSlide(2)">03. Days 31–60: Standardize & Pilot</button>
+    <button class="slide-tab" onclick="goToSlide(3)">04. Days 61–90: Scale & Confirm</button>
+    <button class="slide-tab" onclick="goToSlide(4)">05. KPI & Value Matrix</button>
+    <button class="slide-tab" onclick="goToSlide(5)">06. Day 90 Executive Defense</button>
+  </div>
+
+  <!-- SLIDE 0: Overview -->
+  <div class="slide-card active" id="slide-0">
+    <div class="slide-header">
+      <div class="slide-title-group">
+        <h2>Tata AIA AVP - Cloud AI Ops Probation Confirmation Strategy</h2>
+        <p>A Structured Plan to Build Credibility, Deliver Quick Wins & Secure Formal Confirmation</p>
+      </div>
+      <span class="slide-badge">PROBATION OVERVIEW</span>
+    </div>
+
+    <div class="slide-grid">
+      <div class="dark-box">
+        <div class="dark-box-title">👑 Strategic Objectives During Probation</div>
+        <ul class="dark-list">
+          <li><strong>Take Complete Ownership:</strong> Cloud Architecture, Azure Delta Lake CDC, and AI Ops Telemetry at Thane.</li>
+          <li><strong>Establish Executive Credibility:</strong> Strong alignment across IT, Data Center, InfoSec & Business Verticals.</li>
+          <li><strong>Deliver Early Impact:</strong> Optimize Delta Lake ingestion latency and clean up cloud spend within 30 days.</li>
+          <li><strong>Enforce Governance:</strong> IRDAI cloud security compliance, Zero-Trust rules, and Architecture Review Board (ARB) gates.</li>
+        </ul>
+      </div>
+
+      <div class="info-box">
+        <div class="info-box-title">🏆 3-Phase Execution Schedule</div>
+        <ul class="info-list">
+          <li><strong>Days 1 – 30 (Phase 1):</strong> Infrastructure Audit, Delta Lake CDC review, 1-on-1s & 2 High-Impact Quick Wins.</li>
+          <li><strong>Days 31 – 60 (Phase 2):</strong> Publish Bicep Service Catalog, AI Ops Anomaly Pilot live & Developer Mentorship.</li>
+          <li><strong>Days 61 – 90 (Phase 3):</strong> IRDAI Zero-Trust Audit, DR Drill Simulation, ARB Review & Executive Confirmation.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="slide-footer-controls">
+      <span class="counter">Slide 1 of 6</span>
+      <div class="nav-btns"><button class="btn btn-primary" onclick="goToSlide(1)">Next Slide →</button></div>
+    </div>
+  </div>
+
+  <!-- SLIDE 1: Days 1-30 -->
+  <div class="slide-card" id="slide-1">
+    <div class="slide-header">
+      <div class="slide-title-group">
+        <h2>01. Days 1 – 30 | Phase 1: Audit, Stakeholders & Quick Wins</h2>
+        <p>Discovering Environment, Building Relationships & Delivering Immediate Value</p>
+      </div>
+      <span class="slide-badge">DAYS 1-30</span>
+    </div>
+
+    <div class="slide-grid">
+      <div class="info-box">
+        <div class="info-box-title">🔍 Infrastructure Audit & Assessment</div>
+        <ul class="info-list">
+          <li>Audit Azure footprint: Landing zones, VNets, Azure Stack HCI & Hyper-V setup.</li>
+          <li>Inspect Delta Lake CDC pipelines, ADLS storage tiers, and PySpark query performance.</li>
+          <li>Review Azure Sentinel SIEM, Log Analytics workspaces, and Azure AD RBAC policies.</li>
+          <li>Assess Azure DevOps YAML pipelines, Bicep scripts, and CMDB asset tracking.</li>
+          <li>Map core life insurance workflows: Policy Admin, Tele-underwriting, and Claims.</li>
+        </ul>
+      </div>
+
+      <div class="dark-box">
+        <div class="dark-box-title">⚡ High-Impact Quick Wins</div>
+        <ul class="dark-list">
+          <li>Conduct 1-on-1s with Head of DC, EA, InfoSec, and Business Unit leads.</li>
+          <li><strong>Quick Win 1:</strong> Optimize a slow CDC data ingestion pipeline for immediate speedup.</li>
+          <li><strong>Quick Win 2:</strong> Identify & eliminate unattached cloud resources for instant cost savings.</li>
+          <li>Establish weekly cadence between Cloud Architecture and Data Center teams.</li>
+          <li><strong>Deliverable:</strong> Day 30 State-of-Cloud Assessment Report.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="slide-footer-controls">
+      <span class="counter">Slide 2 of 6</span>
+      <div class="nav-btns"><button class="btn" onclick="goToSlide(0)">← Previous</button><button class="btn btn-primary" onclick="goToSlide(2)">Next Slide →</button></div>
+    </div>
+  </div>
+
+  <!-- SLIDE 2: Days 31-60 -->
+  <div class="slide-card" id="slide-2">
+    <div class="slide-header">
+      <div class="slide-title-group">
+        <h2>02. Days 31 – 60 | Phase 2: Standardize, Pilot & AI Ops Automation</h2>
+        <p>Deploying Reusable Catalogs, AI Ops Anomaly Alerts & Team Mentorship</p>
+      </div>
+      <span class="slide-badge">DAYS 31-60</span>
+    </div>
+
+    <div class="slide-grid">
+      <div class="info-box">
+        <div class="info-box-title">⚙️ Service Catalog & AI Ops Pilot</div>
+        <ul class="info-list">
+          <li>Publish Enterprise Reusable Service Catalog with approved Bicep/Terraform modules.</li>
+          <li>Deploy AI Ops Anomaly Detection pilot in Azure Monitor to auto-detect latency spikes.</li>
+          <li>Optimize Delta Lake Medallion Architecture (Bronze -> Silver -> Gold) with Liquid Clustering.</li>
+          <li>Implement automated quality gates in Azure DevOps YAML pipelines (Checkov/SonarQube).</li>
+          <li>Establish capacity management baseline for peak policy renewal traffic.</li>
+        </ul>
+      </div>
+
+      <div class="dark-box">
+        <div class="dark-box-title">🎓 Mentorship & Governance Framework</div>
+        <ul class="dark-list">
+          <li>Launch 'Java/SOA to Cloud Native' mentorship cohort for development teams.</li>
+          <li>Draft formal IRDAI Cloud Security & Data Sovereignty Audit Checklist.</li>
+          <li>Implement Zero-Trust network rules using Azure Private Link & Key Vault.</li>
+          <li>Establish T-Shirt effort estimation model for new business solution requests.</li>
+          <li><strong>Deliverable:</strong> Day 60 Operational Service Catalog & AI Ops Pilot Launch.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="slide-footer-controls">
+      <span class="counter">Slide 3 of 6</span>
+      <div class="nav-btns"><button class="btn" onclick="goToSlide(1)">← Previous</button><button class="btn btn-primary" onclick="goToSlide(3)">Next Slide →</button></div>
+    </div>
+  </div>
+
+  <!-- SLIDE 3: Days 61-90 -->
+  <div class="slide-card" id="slide-3">
+    <div class="slide-header">
+      <div class="slide-title-group">
+        <h2>03. Days 61 – 90 | Phase 3: Scale, Govern & Executive Confirmation</h2>
+        <p>Production Scaling, DR Drill, ARB Gates & Final Confirmation Review</p>
+      </div>
+      <span class="slide-badge">DAYS 61-90</span>
+    </div>
+
+    <div class="slide-grid">
+      <div class="info-box">
+        <div class="info-box-title">🚀 Enterprise Scale & DR Readiness</div>
+        <ul class="info-list">
+          <li>Scale AI Ops auto-healing webhooks across production insurance workloads.</li>
+          <li>Enforce Architecture Review Board (ARB) design verification gates for all releases.</li>
+          <li>Conduct full Disaster Recovery (DR) & Business Continuity drill (RTO < 15m, RPO < 5m).</li>
+          <li>Finalize capacity planning and auto-scaling rules for business growth.</li>
+          <li>Verify all IT design and cloud architecture risks are logged and mitigated.</li>
+        </ul>
+      </div>
+
+      <div class="dark-box">
+        <div class="dark-box-title">🏆 Executive Confirmation Defense</div>
+        <ul class="dark-list">
+          <li>Compile Executive Probation Achievement Report demonstrating ROI & speed.</li>
+          <li>Highlight developer capability uplift from Java/SOA to Cloud Microservices.</li>
+          <li>Present formal 90-Day Transformation Review to CIO, CTO & IT Leadership.</li>
+          <li>Obtain unanimous Architecture Review Board & HR confirmation endorsement.</li>
+          <li><strong>Deliverable:</strong> Formal Confirmation as AVP - Cloud AI Ops.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="slide-footer-controls">
+      <span class="counter">Slide 4 of 6</span>
+      <div class="nav-btns"><button class="btn" onclick="goToSlide(2)">← Previous</button><button class="btn btn-primary" onclick="goToSlide(4)">Next Slide →</button></div>
+    </div>
+  </div>
+
+  <!-- SLIDE 4: KPI Matrix -->
+  <div class="slide-card" id="slide-4">
+    <div class="slide-header">
+      <div class="slide-title-group">
+        <h2>04. Probation KPI & Measurable Value Matrix</h2>
+        <p>Demonstrating Tangible Business Impact & Architectural Mastery</p>
+      </div>
+      <span class="slide-badge">KPI MATRIX</span>
+    </div>
+
+    <table class="matrix-table">
+      <thead>
+        <tr>
+          <th>Probation Phase</th>
+          <th>Strategic Focus Area</th>
+          <th>Measurable Key Result (KPI)</th>
+          <th>Confirmation Impact</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Days 1 – 30</strong></td>
+          <td>Audit & Quick Wins</td>
+          <td>2 Quick wins delivered; 100% audit of Delta Lake & CDC pipelines</td>
+          <td><span class="status-badge">Immediate Credibility</span></td>
+        </tr>
+        <tr>
+          <td><strong>Days 31 – 60</strong></td>
+          <td>Service Catalog & AI Ops</td>
+          <td>10+ Reusable IaC modules; AI Ops anomaly auto-alerts live</td>
+          <td><span class="status-badge">Architectural Speed</span></td>
+        </tr>
+        <tr>
+          <td><strong>Days 31 – 60</strong></td>
+          <td>Team Mentorship</td>
+          <td>Java/SOA developers trained on Cloud Native Bicep & Microservices</td>
+          <td><span class="status-badge">Capability Uplift</span></td>
+        </tr>
+        <tr>
+          <td><strong>Days 61 – 90</strong></td>
+          <td>IRDAI Security & ARB</td>
+          <td>Zero-Trust network, DR drill passed (RTO < 15m), ARB process live</td>
+          <td><span class="status-badge">Enterprise Governance</span></td>
+        </tr>
+        <tr>
+          <td><strong>Day 90</strong></td>
+          <td>Executive Defense</td>
+          <td>100% Endorsement from CIO / IT Leadership for formal confirmation</td>
+          <td><span class="status-badge">CONFIRMED AVP</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="slide-footer-controls">
+      <span class="counter">Slide 5 of 6</span>
+      <div class="nav-btns"><button class="btn" onclick="goToSlide(3)">← Previous</button><button class="btn btn-primary" onclick="goToSlide(5)">Next Slide →</button></div>
+    </div>
+  </div>
+
+  <!-- SLIDE 5: Day 90 Defense -->
+  <div class="slide-card" id="slide-5">
+    <div class="slide-header">
+      <div class="slide-title-group">
+        <h2>05. Day 90 Executive Probation Defense Strategy</h2>
+        <p>How to Present Your Probation Achievements to CIO & Leadership</p>
+      </div>
+      <span class="slide-badge">EXECUTIVE DEFENSE</span>
+    </div>
+
+    <div class="slide-grid">
+      <div class="info-box">
+        <div class="info-box-title">📊 Key Highlights to Present</div>
+        <ul class="info-list">
+          <li><strong>Cloud Cost Optimization:</strong> Show exact % savings from orphaned resource cleanup in Month 1.</li>
+          <li><strong>CDC Data Ingestion Speed:</strong> Demonstrate reduced latency in Delta Lake ingestion for insurance analytics.</li>
+          <li><strong>Developer Velocity:</strong> Quantify speedup in project delivery using the new Reusable Service Catalog.</li>
+          <li><strong>AI Ops Reliability:</strong> Report reduction in Mean Time to Detect (MTTD) & Mean Time to Resolve (MTTR) via AI Ops.</li>
+        </ul>
+      </div>
+
+      <div class="dark-box">
+        <div class="dark-box-title">🏆 Formal Confirmation Sign-off Checklist</div>
+        <ul class="dark-list">
+          <li>✅ Signed IRDAI Cloud Compliance Audit Verification.</li>
+          <li>✅ Architecture Review Board (ARB) Governance Charter Approved.</li>
+          <li>✅ Endorsement from Head of DC, EA, and InfoSec.</li>
+          <li>✅ Recommendation Letter / Review Approval from CIO / IT VP.</li>
+          <li><strong>Outcome:</strong> Formal Confirmation as AVP - Cloud AI Ops, Tata AIA.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="slide-footer-controls">
+      <span class="counter">Slide 6 of 6</span>
+      <div class="nav-btns">
+        <button class="btn" onclick="goToSlide(4)">← Previous</button>
+        <button class="btn btn-primary" onclick="goToSlide(0)">Restart Deck ↺</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  let currentSlide = 0;
+  const totalSlides = 6;
+
+  function goToSlide(index) {
+    if (index < 0 || index >= totalSlides) return;
+    for (let i = 0; i < totalSlides; i++) {
+      const card = document.getElementById('slide-' + i);
+      if (card) card.classList.remove('active');
+    }
+    const tabs = document.querySelectorAll('.slide-tab');
+    tabs.forEach(tab => tab.classList.remove('active'));
+
+    currentSlide = index;
+    const activeCard = document.getElementById('slide-' + currentSlide);
+    if (activeCard) activeCard.classList.add('active');
+    if (tabs[currentSlide]) {
+      tabs[currentSlide].classList.add('active');
+      tabs[currentSlide].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'ArrowRight' || e.key === 'Space') {
+      goToSlide((currentSlide + 1) % totalSlides);
+    } else if (e.key === 'ArrowLeft') {
+      goToSlide((currentSlide - 1 + totalSlides));
+    }
+  });
+
+  function toggleFullscreen() {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen().catch(err => {});
+    } else {
+      if (document.exitFullscreen) { document.exitFullscreen(); }
+    }
+  }
+</script>
+"""
+
+out_path = '/Users/neeraj.jha/forbes-fab-luxe/tata_aia_avp_probation_plan.html'
+with open(out_path, 'w', encoding='utf-8') as f:
+    f.write(html_content)
+
+print(f"Probation HTML deck saved successfully to {out_path}")
