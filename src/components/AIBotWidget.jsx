@@ -881,7 +881,7 @@ export default function AIBotWidget({ onOpenSiteVisit, onOpenFloorPlan }) {
                   {msg.sender === 'bot' && (
                     <div style={{ marginTop: '10px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderTop: '1px solid rgba(166,129,66,0.15)', paddingTop: '6px' }}>
                       <span style={{ fontSize: '9.5px', color: '#A68142', fontWeight: '700' }}>
-                        {msg.isGemini ? '✨ Gemini 2.0 AI Advice' : '🏛️ Fab Luxe Advisory'}
+                        {msg.isGemini ? '✨ Gemini 2.0 AI Advice' : '🏛️ KB Concierge Advisory'}
                       </span>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                         <button

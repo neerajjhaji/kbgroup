@@ -6,6 +6,7 @@ import LegacyMetrics from './components/LegacyMetrics';
 import Developments from './components/Developments';
 import PriceListSection from './components/PriceListSection';
 import AmenitiesSection from './components/AmenitiesSection';
+import GallerySection from './components/GallerySection';
 import Philosophy from './components/Philosophy';
 import SaintAmandSection from './components/SaintAmandSection';
 import PressAccolades from './components/PressAccolades';
@@ -139,12 +140,20 @@ export default function App() {
         <PriceListSection
           onOpenConcierge={() => setConciergeOpen(true)}
           onOpenSiteVisit={() => setSiteVisitOpen(true)}
+          onOpenBrochure={() => setBrochureOpen(true)}
         />
 
         {/* 5-Level AC Retail & World-Class Amenities Section */}
         <AmenitiesSection
           onOpenSiteVisit={() => setSiteVisitOpen(true)}
           onOpenConcierge={() => setConciergeOpen(true)}
+        />
+
+        {/* Official Photo & Architecture Gallery Section */}
+        <GallerySection
+          onOpenSiteVisit={() => setSiteVisitOpen(true)}
+          onOpenBrochure={() => setBrochureOpen(true)}
+          onOpenFloorPlan={() => setFloorPlanOpen(true)}
         />
 
         {/* Brand Philosophy */}

@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import { Search, Menu, X, ChevronRight, PhoneCall, Calendar, Download, Users } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { Search, Menu, X, ChevronDown, ChevronRight, PhoneCall, Calendar, Download, Users, Sparkles } from 'lucide-react';
 import { FAB_LUXE_PROJECT_DETAILS } from '../data/projectsData';
 
-export default function Navigation({ onOpenSiteVisit, onOpenConcierge, onOpenSearch, onOpenFloorPlan, onOpenLeadsVault }) {
+export default function Navigation({ onOpenSiteVisit, onOpenConcierge, onOpenSearch, onOpenFloorPlan, onOpenBrochure, onOpenLeadsVault }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [actionsDropdownOpen, setActionsDropdownOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('overview');
   const [scrolled, setScrolled] = useState(false);
+  const dropdownRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -31,8 +33,18 @@ export default function Navigation({ onOpenSiteVisit, onOpenConcierge, onOpenSea
       }
     };
 
+    const handleClickOutside = (e) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+        setActionsDropdownOpen(false);
+      }
+    };
+
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
   }, []);
 
   const scrollToSection = (id, sectionName) => {
@@ -49,7 +61,8 @@ export default function Navigation({ onOpenSiteVisit, onOpenConcierge, onOpenSea
     { name: 'retail', label: 'RETAIL & STUDIOS', targetId: 'developments' },
     { name: 'pricing', label: 'PRICE LIST', targetId: 'pricing' },
     { name: 'amenities', label: 'AMENITIES', targetId: 'amenities' },
-    { name: 'location', label: 'LOCATION', targetId: 'location' }
+    { name: 'location', label: 'LOCATION', targetId: 'location' },
+    { name: 'gallery', label: 'GALLERY', targetId: 'gallery' }
   ];
 
   return (
@@ -57,25 +70,25 @@ export default function Navigation({ onOpenSiteVisit, onOpenConcierge, onOpenSea
       position: 'sticky',
       top: 0,
       zIndex: 99,
-      backgroundColor: 'rgba(255, 255, 255, 0.96)',
-      backdropFilter: 'blur(20px)',
+      backgroundColor: '#FFFFFF',
       borderBottom: '1px solid rgba(197, 160, 89, 0.3)',
       width: '100%',
       boxSizing: 'border-box',
-      boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)',
+      boxShadow: '0 4px 20px rgba(0, 0, 0, 0.06)',
       transition: 'all 0.3s ease'
     }}>
       <div style={{
         maxWidth: '1600px',
         margin: '0 auto',
-        padding: scrolled ? '10px 4vw' : '14px 4vw',
+        padding: scrolled ? '10px 3vw' : '14px 3vw',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
+        gap: '20px',
         boxSizing: 'border-box',
         transition: 'padding 0.3s ease'
       }}>
-        {/* Top Header: Main Builder Company Logo Only */}
+        {/* Left: Main Builder Company Logo */}
         <a
           href="#"
           onClick={(e) => {
@@ -85,10 +98,10 @@ export default function Navigation({ onOpenSiteVisit, onOpenConcierge, onOpenSea
           style={{
             textDecoration: 'none',
             backgroundColor: '#FFFFFF',
-            padding: '6px 14px',
+            padding: '4px 12px',
             borderRadius: '6px',
             border: '1px solid #C5A059',
-            boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+            boxShadow: '0 2px 8px rgba(0,0,0,0.06)',
             display: 'flex',
             alignItems: 'center'
           }}
@@ -106,7 +119,7 @@ export default function Navigation({ onOpenSiteVisit, onOpenConcierge, onOpenSea
           />
         </a>
 
-        {/* Dynamic Desktop Link Items */}
+        {/* Center: Standard Horizontal Navigation Links */}
         <div style={{
           display: 'flex',
           alignItems: 'center',
@@ -170,140 +183,223 @@ export default function Navigation({ onOpenSiteVisit, onOpenConcierge, onOpenSea
           </button>
         </div>
 
-        {/* Right CTA Actions */}
+        {/* Right: Single Dropdown Menu accommodating BUYERS VAULT, PRICE LIST, SITE VISIT & ENQUIRE NOW */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-          {/* Buyer Leads Vault Button */}
-          {onOpenLeadsVault && (
+          <div ref={dropdownRef} style={{ position: 'relative' }} className="desktop-actions-dropdown">
             <button
-              onClick={onOpenLeadsVault}
-              title="Open Buyer Leads Vault (Ctrl+Shift+L)"
-              aria-label="Open Buyer Leads Vault"
+              onClick={() => setActionsDropdownOpen(!actionsDropdownOpen)}
               style={{
-                backgroundColor: 'rgba(166, 129, 66, 0.1)',
-                border: '1px solid rgba(166, 129, 66, 0.4)',
-                color: '#A68142',
-                padding: '8px 12px',
-                borderRadius: '4px',
-                fontSize: '11px',
+                backgroundColor: '#B38B46',
+                color: '#FFFFFF',
+                border: 'none',
+                padding: '10px 22px',
+                borderRadius: '8px',
+                fontSize: '12px',
                 fontWeight: '800',
+                letterSpacing: '1.2px',
+                fontFamily: "'Plus Jakarta Sans', sans-serif",
                 cursor: 'pointer',
-                display: 'flex',
+                display: 'inline-flex',
                 alignItems: 'center',
-                gap: '5px',
+                gap: '8px',
+                boxShadow: '0 4px 14px rgba(179, 139, 70, 0.3)',
                 transition: 'all 0.25s ease'
               }}
-              className="desktop-visit-btn"
+              onMouseOver={(e) => {
+                e.currentTarget.style.backgroundColor = '#9A7538';
+                e.currentTarget.style.transform = 'translateY(-1px)';
+              }}
+              onMouseOut={(e) => {
+                e.currentTarget.style.backgroundColor = '#B38B46';
+                e.currentTarget.style.transform = 'translateY(0)';
+              }}
             >
-              <Users size={13} />
-              <span>BUYERS VAULT</span>
+              <Sparkles size={14} style={{ color: '#FFFFFF' }} />
+              <span>QUICK ACTIONS</span>
+              <ChevronDown size={14} style={{
+                transform: actionsDropdownOpen ? 'rotate(180deg)' : 'rotate(0deg)',
+                transition: 'transform 0.25s ease',
+                color: '#FFFFFF'
+              }} />
             </button>
-          )}
 
-          {/* Price List PDF Button */}
-          <a
-            href={FAB_LUXE_PROJECT_DETAILS.priceListUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{
-              background: 'rgba(166, 129, 66, 0.12)',
-              border: '1px solid rgba(166, 129, 66, 0.5)',
-              color: '#A68142',
-              padding: '8px 14px',
-              borderRadius: '4px',
-              fontSize: '11px',
-              fontWeight: '800',
-              cursor: 'pointer',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '6px',
-              textDecoration: 'none',
-              transition: 'all 0.25s ease'
-            }}
-            className="desktop-visit-btn"
-          >
-            <Download size={13} />
-            <span>PRICE LIST</span>
-          </a>
+            {/* Single Dropdown accommodating all 4 buttons from Image #3 */}
+            {actionsDropdownOpen && (
+              <div style={{
+                position: 'absolute',
+                top: 'calc(100% + 8px)',
+                right: 0,
+                width: '280px',
+                backgroundColor: '#FFFFFF',
+                border: '1.5px solid #C5A059',
+                borderRadius: '12px',
+                boxShadow: '0 16px 40px rgba(0, 0, 0, 0.15)',
+                padding: '14px',
+                zIndex: 100,
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '10px',
+                animation: 'fadeIn 0.2s ease-in-out'
+              }}>
+                {/* 1. BUYERS VAULT */}
+                {onOpenLeadsVault && (
+                  <button
+                    onClick={() => { setActionsDropdownOpen(false); onOpenLeadsVault(); }}
+                    style={{
+                      width: '100%',
+                      backgroundColor: '#FBF8F3',
+                      border: '1.5px solid #C5A059',
+                      color: '#B38B46',
+                      padding: '11px 18px',
+                      borderRadius: '8px',
+                      fontSize: '12px',
+                      fontWeight: '800',
+                      letterSpacing: '1px',
+                      fontFamily: "'Plus Jakarta Sans', sans-serif",
+                      cursor: 'pointer',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'flex-start',
+                      gap: '10px',
+                      boxSizing: 'border-box',
+                      transition: 'all 0.2s ease'
+                    }}
+                    onMouseOver={(e) => {
+                      e.currentTarget.style.backgroundColor = '#FAF2E6';
+                      e.currentTarget.style.transform = 'translateX(2px)';
+                    }}
+                    onMouseOut={(e) => {
+                      e.currentTarget.style.backgroundColor = '#FBF8F3';
+                      e.currentTarget.style.transform = 'translateX(0)';
+                    }}
+                  >
+                    <Users size={16} style={{ color: '#B38B46' }} />
+                    <span>BUYERS VAULT</span>
+                  </button>
+                )}
 
-          {/* Book Site Visit Button */}
-          <button
-            onClick={onOpenSiteVisit}
-            style={{
-              backgroundColor: 'transparent',
-              border: '1px solid #A68142',
-              color: '#A68142',
-              padding: '8px 16px',
-              borderRadius: '4px',
-              fontSize: '11px',
-              fontWeight: '800',
-              letterSpacing: '1px',
-              textTransform: 'uppercase',
-              cursor: 'pointer',
-              transition: 'all 0.25s ease',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '6px'
-            }}
-            onMouseOver={(e) => {
-              e.currentTarget.style.backgroundColor = '#A68142';
-              e.currentTarget.style.color = '#FFFFFF';
-            }}
-            onMouseOut={(e) => {
-              e.currentTarget.style.backgroundColor = 'transparent';
-              e.currentTarget.style.color = '#A68142';
-            }}
-            className="desktop-visit-btn"
-          >
-            <Calendar size={13} />
-            <span>SITE VISIT</span>
-          </button>
+                {/* 2. PRICE LIST */}
+                <button
+                  onClick={() => { setActionsDropdownOpen(false); onOpenBrochure(); }}
+                  style={{
+                    width: '100%',
+                    backgroundColor: '#FBF8F3',
+                    border: '1.5px solid #C5A059',
+                    color: '#B38B46',
+                    padding: '11px 18px',
+                    borderRadius: '8px',
+                    fontSize: '12px',
+                    fontWeight: '800',
+                    letterSpacing: '1px',
+                    fontFamily: "'Plus Jakarta Sans', sans-serif",
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'flex-start',
+                    gap: '10px',
+                    boxSizing: 'border-box',
+                    transition: 'all 0.2s ease'
+                  }}
+                  onMouseOver={(e) => {
+                    e.currentTarget.style.backgroundColor = '#FAF2E6';
+                    e.currentTarget.style.transform = 'translateX(2px)';
+                  }}
+                  onMouseOut={(e) => {
+                    e.currentTarget.style.backgroundColor = '#FBF8F3';
+                    e.currentTarget.style.transform = 'translateX(0)';
+                  }}
+                >
+                  <Download size={16} style={{ color: '#B38B46' }} />
+                  <span>PRICE LIST</span>
+                </button>
 
-          {/* Enquire Now Button */}
-          <button
-            onClick={onOpenConcierge}
-            style={{
-              backgroundColor: '#A68142',
-              color: '#FFFFFF',
-              border: 'none',
-              borderRadius: '4px',
-              padding: '9px 20px',
-              fontSize: '11px',
-              fontWeight: '800',
-              letterSpacing: '1px',
-              textTransform: 'uppercase',
-              cursor: 'pointer',
-              transition: 'all 0.25s ease',
-              boxShadow: '0 4px 12px rgba(166, 129, 66, 0.25)',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '6px'
-            }}
-            onMouseOver={(e) => {
-              e.currentTarget.style.transform = 'translateY(-1px)';
-              e.currentTarget.style.boxShadow = '0 6px 20px rgba(166, 129, 66, 0.4)';
-            }}
-            onMouseOut={(e) => {
-              e.currentTarget.style.transform = 'translateY(0)';
-              e.currentTarget.style.boxShadow = '0 4px 12px rgba(166, 129, 66, 0.25)';
-            }}
-          >
-            <PhoneCall size={13} />
-            <span>ENQUIRE NOW</span>
-          </button>
+                {/* 3. SITE VISIT */}
+                <button
+                  onClick={() => { setActionsDropdownOpen(false); onOpenSiteVisit(); }}
+                  style={{
+                    width: '100%',
+                    backgroundColor: '#FBF8F3',
+                    border: '1.5px solid #C5A059',
+                    color: '#B38B46',
+                    padding: '11px 18px',
+                    borderRadius: '8px',
+                    fontSize: '12px',
+                    fontWeight: '800',
+                    letterSpacing: '1px',
+                    fontFamily: "'Plus Jakarta Sans', sans-serif",
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'flex-start',
+                    gap: '10px',
+                    boxSizing: 'border-box',
+                    transition: 'all 0.2s ease'
+                  }}
+                  onMouseOver={(e) => {
+                    e.currentTarget.style.backgroundColor = '#FAF2E6';
+                    e.currentTarget.style.transform = 'translateX(2px)';
+                  }}
+                  onMouseOut={(e) => {
+                    e.currentTarget.style.backgroundColor = '#FBF8F3';
+                    e.currentTarget.style.transform = 'translateX(0)';
+                  }}
+                >
+                  <Calendar size={16} style={{ color: '#B38B46' }} />
+                  <span>SITE VISIT</span>
+                </button>
+
+                {/* 4. ENQUIRE NOW */}
+                <button
+                  onClick={() => { setActionsDropdownOpen(false); onOpenConcierge(); }}
+                  style={{
+                    width: '100%',
+                    backgroundColor: '#B38B46',
+                    border: 'none',
+                    color: '#FFFFFF',
+                    padding: '12px 18px',
+                    borderRadius: '8px',
+                    fontSize: '12px',
+                    fontWeight: '800',
+                    letterSpacing: '1.2px',
+                    fontFamily: "'Plus Jakarta Sans', sans-serif",
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'flex-start',
+                    gap: '10px',
+                    boxSizing: 'border-box',
+                    boxShadow: '0 4px 12px rgba(179, 139, 70, 0.35)',
+                    transition: 'all 0.2s ease'
+                  }}
+                  onMouseOver={(e) => {
+                    e.currentTarget.style.backgroundColor = '#9A7538';
+                    e.currentTarget.style.transform = 'translateX(2px)';
+                  }}
+                  onMouseOut={(e) => {
+                    e.currentTarget.style.backgroundColor = '#B38B46';
+                    e.currentTarget.style.transform = 'translateX(0)';
+                  }}
+                >
+                  <PhoneCall size={16} style={{ color: '#FFFFFF' }} />
+                  <span>ENQUIRE NOW</span>
+                </button>
+              </div>
+            )}
+          </div>
 
           {/* Mobile Menu Icon */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             style={{
-              background: 'none',
-              border: '1px solid #A68142',
-              color: '#A68142',
-              padding: '6px',
+              background: '#FBF8F3',
+              border: '1.5px solid #C5A059',
+              color: '#B38B46',
+              padding: '8px',
               cursor: 'pointer',
               display: 'none',
               alignItems: 'center',
               justifyContent: 'center',
-              borderRadius: '4px'
+              borderRadius: '8px'
             }}
             className="mobile-menu-toggle"
           >
@@ -312,7 +408,7 @@ export default function Navigation({ onOpenSiteVisit, onOpenConcierge, onOpenSea
         </div>
       </div>
 
-      {/* Mobile Drawer */}
+      {/* Mobile Menu Drawer */}
       {mobileMenuOpen && (
         <div style={{
           backgroundColor: '#FFFFFF',
@@ -330,7 +426,7 @@ export default function Navigation({ onOpenSiteVisit, onOpenConcierge, onOpenSea
               style={{
                 background: 'none',
                 border: 'none',
-                color: activeSection === link.name ? '#A68142' : '#1E293B',
+                color: activeSection === link.name ? '#B38B46' : '#1E293B',
                 fontSize: '13px',
                 fontWeight: '700',
                 textAlign: 'left',
@@ -343,44 +439,67 @@ export default function Navigation({ onOpenSiteVisit, onOpenConcierge, onOpenSea
               }}
             >
               <span>{link.label}</span>
-              <ChevronRight size={14} style={{ color: '#A68142' }} />
+              <ChevronRight size={14} style={{ color: '#B38B46' }} />
             </button>
           ))}
 
-          <a
-            href={FAB_LUXE_PROJECT_DETAILS.priceListUrl}
-            target="_blank"
-            rel="noopener noreferrer"
+          {onOpenLeadsVault && (
+            <button
+              onClick={() => { setMobileMenuOpen(false); onOpenLeadsVault(); }}
+              style={{
+                backgroundColor: '#FBF8F3',
+                border: '1.5px solid #C5A059',
+                color: '#B38B46',
+                padding: '12px',
+                fontSize: '12px',
+                fontWeight: '800',
+                letterSpacing: '1px',
+                borderRadius: '8px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '8px'
+              }}
+            >
+              <Users size={14} />
+              <span>BUYERS VAULT</span>
+            </button>
+          )}
+
+          <button
+            onClick={() => { setMobileMenuOpen(false); onOpenBrochure(); }}
             style={{
-              color: '#A68142',
-              fontSize: '13px',
-              fontWeight: '700',
-              textDecoration: 'none',
+              backgroundColor: '#FBF8F3',
+              border: '1.5px solid #C5A059',
+              color: '#B38B46',
+              padding: '12px',
+              fontSize: '12px',
+              fontWeight: '800',
+              letterSpacing: '1px',
+              borderRadius: '8px',
               display: 'flex',
               alignItems: 'center',
-              justifyContent: 'space-between',
-              padding: '12px 0',
-              borderBottom: '1px solid #F1F5F9',
-              letterSpacing: '1px'
+              justifyContent: 'center',
+              gap: '8px'
             }}
           >
-            <span>DOWNLOAD PRICE LIST (PDF)</span>
             <Download size={14} />
-          </a>
+            <span>DOWNLOAD PRICE LIST</span>
+          </button>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginTop: '14px' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginTop: '10px' }}>
             <button
               onClick={() => { setMobileMenuOpen(false); onOpenSiteVisit(); }}
               style={{
                 backgroundColor: 'transparent',
-                border: '1px solid #D4AF37',
-                color: '#D4AF37',
+                border: '1.5px solid #C5A059',
+                color: '#B38B46',
                 padding: '12px',
                 fontSize: '12px',
-                fontWeight: '700',
+                fontWeight: '800',
                 letterSpacing: '1px',
                 textTransform: 'uppercase',
-                borderRadius: '4px'
+                borderRadius: '8px'
               }}
             >
               SCHEDULE SITE VISIT
@@ -388,16 +507,16 @@ export default function Navigation({ onOpenSiteVisit, onOpenConcierge, onOpenSea
             <button
               onClick={() => { setMobileMenuOpen(false); onOpenConcierge(); }}
               style={{
-                backgroundColor: '#D4AF37',
-                color: '#0B0E14',
+                backgroundColor: '#B38B46',
+                color: '#FFFFFF',
                 border: 'none',
                 padding: '12px',
                 fontSize: '12px',
                 fontWeight: '800',
                 letterSpacing: '1px',
                 textTransform: 'uppercase',
-                borderRadius: '4px',
-                boxShadow: '0 4px 12px rgba(212, 175, 55, 0.3)'
+                borderRadius: '8px',
+                boxShadow: '0 4px 12px rgba(179, 139, 70, 0.3)'
               }}
             >
               ENQUIRE NOW
@@ -411,7 +530,7 @@ export default function Navigation({ onOpenSiteVisit, onOpenConcierge, onOpenSea
           .desktop-nav-links {
             display: none !important;
           }
-          .desktop-visit-btn {
+          .desktop-actions-dropdown {
             display: none !important;
           }
           .mobile-menu-toggle {

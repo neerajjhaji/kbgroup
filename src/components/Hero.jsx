@@ -239,10 +239,8 @@ export default function Hero({ onOpenSiteVisit, onOpenBrochure, onOpenFloorPlan 
             <span>BOOK VIP SITE VISIT</span>
           </button>
 
-          <a
-            href={FAB_LUXE_PROJECT_DETAILS.priceListUrl}
-            target="_blank"
-            rel="noopener noreferrer"
+          <button
+            onClick={onOpenBrochure}
             style={{
               backgroundColor: 'rgba(15, 20, 29, 0.85)',
               border: '1px solid #D4AF37',
@@ -257,7 +255,6 @@ export default function Hero({ onOpenSiteVisit, onOpenBrochure, onOpenFloorPlan 
               alignItems: 'center',
               gap: '10px',
               borderRadius: '4px',
-              textDecoration: 'none',
               backdropFilter: 'blur(10px)',
               transition: 'all 0.25s ease'
             }}
@@ -266,7 +263,7 @@ export default function Hero({ onOpenSiteVisit, onOpenBrochure, onOpenFloorPlan 
           >
             <Download size={16} />
             <span>DOWNLOAD COST SHEET (PDF)</span>
-          </a>
+          </button>
 
           <button
             onClick={onOpenFloorPlan}

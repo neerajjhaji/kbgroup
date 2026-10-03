@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { X, Layers, CheckCircle2, Download } from 'lucide-react';
-import { TYPOLOGIES, FAB_LUXE_PROJECT_DETAILS } from '../data/projectsData';
+import { X, Layers, CheckCircle2, Download, Image as ImageIcon } from 'lucide-react';
+import { TYPOLOGIES, FAB_LUXE_PROJECT_DETAILS, SYNCED_FLYERS } from '../data/projectsData';
 
 export default function FloorPlanModal({ isOpen, onClose, onOpenSiteVisit, onOpenBrochure }) {
   const [activeTab, setActiveTab] = useState('ground_retail');
@@ -205,6 +205,48 @@ export default function FloorPlanModal({ isOpen, onClose, onOpenSiteVisit, onOpe
                 <span>PDF Blueprint</span>
               </button>
             </div>
+          </div>
+        </div>
+
+        {/* Synced Official Project Flyers & Architecture Showcase Grid */}
+        <div style={{ marginTop: '40px', paddingTop: '28px', borderTop: '1px solid rgba(166, 129, 66, 0.2)' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#A68142', fontSize: '12px', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '1.5px', marginBottom: '6px' }}>
+            <ImageIcon size={16} />
+            OFFICIAL PROJECT FLYERS & ARCHITECTURE GALLERY
+          </div>
+          <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '22px', color: '#1A1815', fontWeight: '600', marginBottom: '16px' }}>
+            Floor Plan Schematics, Elevation Views & Site Maps
+          </h3>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: '16px' }}>
+            {SYNCED_FLYERS.map((flyer) => (
+              <div
+                key={flyer.id}
+                style={{
+                  backgroundColor: '#FAF7F2',
+                  border: '1px solid rgba(166, 129, 66, 0.25)',
+                  borderRadius: '4px',
+                  overflow: 'hidden',
+                  transition: 'transform 0.2s',
+                  cursor: 'pointer'
+                }}
+                onClick={() => { onClose(); onOpenBrochure(); }}
+              >
+                <img
+                  src={flyer.image}
+                  alt={flyer.title}
+                  style={{ width: '100%', height: '140px', objectFit: 'cover' }}
+                />
+                <div style={{ padding: '10px 12px' }}>
+                  <span style={{ fontSize: '9px', fontWeight: '800', color: '#A68142', textTransform: 'uppercase', letterSpacing: '0.8px', display: 'block' }}>
+                    {flyer.category}
+                  </span>
+                  <div style={{ fontSize: '11px', fontWeight: '700', color: '#1A1815', marginTop: '2px', lineHeight: '1.3' }}>
+                    {flyer.title}
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>

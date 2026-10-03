@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { RETAIL_PRICE_SHEET, PAYMENT_PLANS, FAB_LUXE_PROJECT_DETAILS } from '../data/projectsData';
 import { Download, CheckCircle2, ShieldCheck, FileText, CreditCard, Sparkles, Building, ChevronRight } from 'lucide-react';
 
-export default function PriceListSection({ onOpenConcierge, onOpenSiteVisit }) {
+export default function PriceListSection({ onOpenConcierge, onOpenSiteVisit, onOpenBrochure }) {
   const [activePlan, setActivePlan] = useState(PAYMENT_PLANS[0].id);
 
   const selectedPlanObj = PAYMENT_PLANS.find(p => p.id === activePlan) || PAYMENT_PLANS[0];
@@ -57,6 +57,93 @@ export default function PriceListSection({ onOpenConcierge, onOpenSiteVisit }) {
           }} />
         </div>
 
+        {/* Special Offer Promotional Banner from Advertisement Flyer */}
+        <div style={{
+          background: 'linear-gradient(135deg, #1E293B 0%, #0F172A 100%)',
+          border: '2px solid #D4AF37',
+          borderRadius: '12px',
+          padding: '30px',
+          marginBottom: '50px',
+          boxShadow: '0 16px 40px rgba(212, 175, 55, 0.15)',
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+          gap: '30px',
+          alignItems: 'center'
+        }}>
+          <div>
+            <span style={{
+              background: 'rgba(212, 175, 55, 0.15)',
+              color: '#D4AF37',
+              border: '1px solid #D4AF37',
+              padding: '4px 12px',
+              borderRadius: '20px',
+              fontSize: '11px',
+              fontWeight: '800',
+              letterSpacing: '2px',
+              textTransform: 'uppercase',
+              display: 'inline-block',
+              marginBottom: '12px'
+            }}>
+              SPECIAL INAUGURAL PROMOTIONAL OFFER
+            </span>
+            <h3 style={{
+              fontFamily: "'Outfit', sans-serif",
+              fontSize: '28px',
+              fontWeight: '800',
+              color: '#FFFFFF',
+              margin: '0 0 10px 0',
+              lineHeight: '1.2'
+            }}>
+              Noida Extension's First <span style={{ color: '#D4AF37' }}>Fully AC Mall</span>
+            </h3>
+            <p style={{ color: '#94A3B8', fontSize: '14px', margin: 0, lineHeight: '1.6' }}>
+              Prime commercial high-street location at Plot C-3, Ecotech-12 with unmatched footfall potential and pre-leased guaranteed returns.
+            </p>
+          </div>
+
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: '1fr 1fr',
+            gap: '16px'
+          }}>
+            <div style={{
+              backgroundColor: 'rgba(15, 20, 29, 0.8)',
+              border: '1px solid rgba(212, 175, 55, 0.4)',
+              borderRadius: '8px',
+              padding: '18px',
+              textAlign: 'center'
+            }}>
+              <span style={{ fontSize: '11px', color: '#94A3B8', fontWeight: '700', textTransform: 'uppercase', display: 'block' }}>
+                Pre-Leased Retail Shop
+              </span>
+              <div style={{ fontSize: '24px', fontWeight: '800', color: '#D4AF37', margin: '6px 0' }}>
+                ₹ 32 LAKH*
+              </div>
+              <span style={{ fontSize: '12px', color: '#10B981', fontWeight: '700' }}>
+                Lease @ ₹ 95 / Sq. Ft.
+              </span>
+            </div>
+
+            <div style={{
+              backgroundColor: 'rgba(15, 20, 29, 0.8)',
+              border: '1px solid rgba(212, 175, 55, 0.4)',
+              borderRadius: '8px',
+              padding: '18px',
+              textAlign: 'center'
+            }}>
+              <span style={{ fontSize: '11px', color: '#94A3B8', fontWeight: '700', textTransform: 'uppercase', display: 'block' }}>
+                Furnished Studio
+              </span>
+              <div style={{ fontSize: '24px', fontWeight: '800', color: '#D4AF37', margin: '6px 0' }}>
+                ₹ 60 LAKH*
+              </div>
+              <span style={{ fontSize: '12px', color: '#38BDF8', fontWeight: '700' }}>
+                Move-In Ready
+              </span>
+            </div>
+          </div>
+        </div>
+
         {/* BSP Price Sheet Table */}
         <div style={{
           backgroundColor: 'rgba(15, 20, 29, 0.95)',
@@ -83,10 +170,8 @@ export default function PriceListSection({ onOpenConcierge, onOpenSiteVisit }) {
               <span style={{ color: '#94A3B8', fontSize: '13px' }}>Base Selling Price per Sq. Ft.</span>
             </div>
 
-            <a
-              href={FAB_LUXE_PROJECT_DETAILS.priceListUrl}
-              target="_blank"
-              rel="noopener noreferrer"
+            <button
+              onClick={onOpenBrochure}
               style={{
                 background: 'linear-gradient(135deg, #D4AF37 0%, #AA820A 100%)',
                 color: '#0B0E14',
@@ -96,7 +181,8 @@ export default function PriceListSection({ onOpenConcierge, onOpenSiteVisit }) {
                 fontWeight: '800',
                 letterSpacing: '1px',
                 textTransform: 'uppercase',
-                textDecoration: 'none',
+                border: 'none',
+                cursor: 'pointer',
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: '8px',
@@ -104,8 +190,8 @@ export default function PriceListSection({ onOpenConcierge, onOpenSiteVisit }) {
               }}
             >
               <Download size={14} />
-              <span>DOWNLOAD OFFICIAL PRICE PDF</span>
-            </a>
+              <span>REQUEST OFFICIAL PRICE LIST PDF</span>
+            </button>
           </div>
 
           <div style={{

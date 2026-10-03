@@ -126,15 +126,15 @@ export default function BrochureModal({ isOpen, onClose }) {
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#A68142', fontSize: '12px', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '1.5px', marginBottom: '6px' }}>
               <Download size={16} />
-              OFFICIAL PROJECT BROCHURE
+              OFFICIAL BROCHURE & PRICE LIST
             </div>
 
             <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '28px', color: '#1A1815', fontWeight: '600', marginBottom: '8px' }}>
-              Download E-Brochure & Pricing Portfolio
+              Request Official Price List & Brochure
             </h2>
 
             <p style={{ fontSize: '13px', color: '#5E574F', marginBottom: '24px' }}>
-              Ecotech-12, Greater Noida West • Enter your details to instantly receive the high-resolution PDF brochure via Email & WhatsApp.
+              Ecotech-12, Greater Noida West • Enter your details below to instantly unlock & download the official Price List PDF & E-Brochure.
             </p>
 
             {errorMessage && (
@@ -321,7 +321,7 @@ export default function BrochureModal({ isOpen, onClose }) {
 
             <div style={{ display: 'flex', gap: '12px', flexDirection: 'column' }}>
               <a
-                href={FAB_LUXE_PROJECT_DETAILS.brochureUrl}
+                href={FAB_LUXE_PROJECT_DETAILS.priceListUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{
@@ -340,7 +340,32 @@ export default function BrochureModal({ isOpen, onClose }) {
                 }}
               >
                 <FileText size={16} />
-                <span>Open PDF Brochure Directly</span>
+                <span>Open Official Price List PDF</span>
+                <ExternalLink size={14} />
+              </a>
+
+              <a
+                href={FAB_LUXE_PROJECT_DETAILS.brochureUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  padding: '14px',
+                  backgroundColor: '#FAF7F2',
+                  border: '1px solid #A68142',
+                  color: '#1A1815',
+                  textDecoration: 'none',
+                  fontWeight: '700',
+                  fontSize: '12px',
+                  textTransform: 'uppercase',
+                  borderRadius: '2px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '8px'
+                }}
+              >
+                <Download size={16} />
+                <span>Open Digital E-Brochure PDF</span>
                 <ExternalLink size={14} />
               </a>
 

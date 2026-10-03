@@ -1,4 +1,4 @@
-export const FAB_LUXE_PROJECT_DETAILS = {
+export const KB_WEST_WALK_PROJECT_DETAILS = {
   name: 'KB West Walk',
   location: 'Plot No. C-3, Ecotech-12, Greater Noida West',
   developer: 'Shree Kunj Bihariji Realty Pvt. Ltd.',
@@ -27,6 +27,8 @@ export const FAB_LUXE_PROJECT_DETAILS = {
   siteOffice: 'Plot No. C-3, Ecotech-12, Greater Noida West - 201318',
   corpOffice: 'FF-39, First Floor, KB Complex, Plot No. LS-1, Alpha-2, Greater Noida, U.P. 201310'
 };
+
+export const FAB_LUXE_PROJECT_DETAILS = KB_WEST_WALK_PROJECT_DETAILS;
 
 export const CONNECTIVITY_POINTS = [
   { name: 'Proposed Ecotech-12 Metro Station', time: 'Walking Distance', distance: '100 Meters', icon: 'Subway' },
@@ -130,12 +132,12 @@ export const TYPOLOGIES = [
   {
     id: 'ground_retail',
     title: 'Ground Floor Boulevard High-Street Retail',
-    superArea: 'High-Visibility Frontage Stores',
+    superArea: '150 – 1200 Sq. Ft.',
     carpetArea: 'Optimal Double-Height Ceiling Layouts',
     price: '₹ 37,900 / Sq. Ft.*',
     description: 'Premier Ground Floor retail shops facing the expansive pedestrian promenade and atrium. Designed for maximum footfall and grand visual display.',
-    image: '/kbww/WhatsApp_Image_2026-10-01_at_21.33.26.jpeg',
-    floorPlanImg: '/kbww/page_11.png',
+    image: '/images/kbwestwalks/kb-retail.jpeg',
+    floorPlanImg: '/images/kbwestwalks/kf1.jpg',
     highlights: [
       'Maximum Pedestrian Atrium & Street Frontage',
       'AC Zone Shopping Experience',
@@ -147,12 +149,12 @@ export const TYPOLOGIES = [
   {
     id: 'lgf_retail',
     title: 'Lower Ground Floor Hypermarket & Anchor Retail',
-    superArea: 'High Density Shopper Destination',
+    superArea: '150 – 1200 Sq. Ft.',
     carpetArea: 'Spacious Commercial Footprint',
     price: '₹ 25,900 / Sq. Ft.*',
     description: 'High-footfall Lower Ground Floor dedicated to anchor hypermarkets, electronics hubs, and daily convenience outlets with escalators & elevators.',
-    image: '/kbww/WhatsApp_Image_2026-10-01_at_21.33.28.jpeg',
-    floorPlanImg: '/kbww/page_11.png',
+    image: '/images/kbwestwalks/kb-retail.jpeg',
+    floorPlanImg: '/images/kbwestwalks/kf2.jpg',
     highlights: [
       'Direct Escalator Connectivity from Boulevard',
       'Designed for Grocery, Electronics & Home Decor',
@@ -163,12 +165,12 @@ export const TYPOLOGIES = [
   {
     id: 'first_retail',
     title: 'First Floor Fashion & Lifestyle Arcades',
-    superArea: 'Curated Brand Showrooms',
+    superArea: '150 – 1200 Sq. Ft.',
     carpetArea: 'Seamless Atrium Facing Shops',
     price: '₹ 24,900 / Sq. Ft.*',
     description: 'Vibrant First Floor dedicated to fashion wear, footwear, beauty salons, and gadget galleries overlooking the central glass atrium.',
-    image: '/kbww/WhatsApp_Image_2026-10-01_at_21.33.27.jpeg',
-    floorPlanImg: '/kbww/page_12.png',
+    image: '/images/kbwestwalks/kb-food.jpeg',
+    floorPlanImg: '/images/kbwestwalks/kf3.jpg',
     highlights: [
       'Central Glass Atrium Views',
       'High Visibility Pedestrian Walkways',
@@ -179,12 +181,12 @@ export const TYPOLOGIES = [
   {
     id: 'studio_apartments',
     title: 'State-of-the-Art Studio Suites & Executive Workspaces',
-    superArea: 'Floors 6th to 18th',
+    superArea: 'Floors 6th to 20th',
     carpetArea: 'Fully Air-Conditioned Serviced Studios',
     price: 'Price On Request (VIP Launch Rate)',
-    description: 'Modern, state-of-the-art studio apartments and executive workspaces offering high rental yield, boutique amenities, and panoramic city views.',
-    image: '/kbww/WhatsApp_Image_2026-10-01_at_21.33.34.jpeg',
-    floorPlanImg: '/kbww/page_15.png',
+    description: 'Modern, fully loaded studio apartments and executive workspaces offering high rental yield, boutique amenities, and panoramic city views.',
+    image: '/images/kbwestwalks/kb-studio.jpeg',
+    floorPlanImg: '/images/kbwestwalks/kf5.jpg',
     highlights: [
       'High Rental Demand Location at Ecotech-12',
       'Boutique Hospitality & Workspace Interiors',
@@ -335,32 +337,48 @@ export const COLLECTIONS_DATA = [
     id: 'retail_shops',
     title: 'Boulevard High-Street Retail Shops',
     subtitle: 'Lower Ground, Ground & First Floor',
-    price: 'Starting ₹ 24,900 / Sq. Ft.*',
-    area: 'Various Unit Sizes Available',
-    tag: '5-Level AC Shopping Arcade',
-    image: '/kbww/WhatsApp_Image_2026-10-01_at_21.33.26.jpeg',
-    features: ['Double Height Ceiling', 'High Glass Frontage', 'Central Atrium Facing', '100% Power Backup']
+    price: 'Pre-Leased @ ₹ 32 LAKH ONLY* (Lease @ ₹ 95/sq.ft.)',
+    area: '150 – 1200 Sq. Ft. Unit Sizes',
+    tag: "Noida Extension's First Fully AC Mall",
+    image: '/images/kbwestwalks/kb-retail.jpeg',
+    features: ['Pre-Leased @ ₹95/sq.ft.', 'Double Height Ceiling', 'Central Atrium Facing', 'High Footfall Hub']
   },
   {
     id: 'food_cinema',
     title: 'Food Court, Cafes & Multiplex Cinema',
     subtitle: '3rd, 4th & 5th Floors',
     price: 'High Yield Investment',
-    area: 'Dedicated Hospitality Zones',
+    area: '160 – 600 Sq. Ft. Food Outlets',
     tag: 'Dining & Entertainment Hub',
-    image: '/kbww/WhatsApp_Image_2026-10-01_at_21.33.30.jpeg',
+    image: '/images/kbwestwalks/kb-food.jpeg',
     features: ['Rooftop Open Dining', 'Multi-Screen Multiplex', 'Gourmet Food Court', 'High Footfall Anchor']
   },
   {
     id: 'studio_suites',
     title: 'State-of-the-Art Studio Suites',
     subtitle: '6th to 18th Floors',
-    price: 'Price On Request',
-    area: 'Boutique Executive Studios',
-    tag: 'Serviced Living & Workspaces',
-    image: '/kbww/WhatsApp_Image_2026-10-01_at_21.33.34.jpeg',
-    features: ['Furnished Interior Options', 'Panoramic Urban Views', 'Dedicated Elevators', 'High Rental Demand']
+    price: 'Fully Furnished @ ₹ 60 LAKH ONLY*',
+    area: 'Fully Loaded Boutique Studios',
+    tag: 'Move-In Ready Serviced Suites',
+    image: '/images/kbwestwalks/kb-studio.jpeg',
+    features: ['Luxury Appliances Included', 'Chic Interiors & Designer Furniture', 'Dedicated Elevators', 'High Rental Demand']
   }
+];
+
+export const SYNCED_FLYERS = [
+  { id: 'f0', title: 'Official Promotional Flyer — Studio @ ₹60 Lakhs & Retail @ ₹32 Lakhs', category: 'Special Offer Flyer', image: '/images/kb_advertisement_flyer.png' },
+  { id: 'f1', title: 'Ground Floor & LGF Retail Layout', category: 'Retail High-Street', image: '/images/kbwestwalks/kf1.jpg' },
+  { id: 'f2', title: 'First & Second Floor Fashion Arcades', category: 'Brand Showrooms', image: '/images/kbwestwalks/kf2.jpg' },
+  { id: 'f3', title: 'Gourmet Food Court & Rooftop Dining', category: 'Food & Dining', image: '/images/kbwestwalks/kf3.jpg' },
+  { id: 'f4', title: 'Multiplex Cinema & Entertainment Zone', category: 'Entertainment', image: '/images/kbwestwalks/kf4.jpg' },
+  { id: 'f5', title: 'Serviced Luxury Studio Apartments', category: 'Studio Suites', image: '/images/kbwestwalks/kf5.jpg' },
+  { id: 'f6', title: 'Ecotech-12 Location Master Plan', category: 'Location Connectivity', image: '/images/kbwestwalks/kf6.jpg' },
+  { id: 'f7', title: 'Project Frontage Elevation View', category: 'Exterior Architecture', image: '/images/kbwestwalks/k1.jpg' },
+  { id: 'f8', title: 'Shopping Atrium & Glass Frontage', category: 'High-Street Promenade', image: '/images/kbwestwalks/k2.jpg' },
+  { id: 'f9', title: 'Gourmet Food Court Seating Concept', category: 'Dining Hub', image: '/images/kbwestwalks/k3.jpg' },
+  { id: 'f10', title: 'Studio Suite Executive Interior', category: 'Serviced Suites', image: '/images/kbwestwalks/k4.jpg' },
+  { id: 'f11', title: 'Basement Parking & Infrastructure', category: 'Facilities', image: '/images/kbwestwalks/k5.jpg' },
+  { id: 'f12', title: 'Night View & Illumination', category: 'Landmark Architecture', image: '/images/kbwestwalks/k6.jpg' }
 ];
 
 export const KB_SERVICES_LIST = [
